@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zrbqt0f6rv"></script>
+     <link href="./styles/pDesign.css" rel="stylesheet" type="text/css" />
+   
+    
+    </head>
+    <body>
+    <script>
+    var mapOptions = {
+    	    center: new naver.maps.LatLng(33.271695304916086, 126.18480672457099),
+    	    zoom: 13
+    	    
+    	};
+
+    	var map = new naver.maps.Map('map', mapOptions);
+
+
+    	var marker = new naver.maps.Marker({
+    	    position: new naver.maps.LatLng(33.271695304916086, 126.18480672457099),
+    	    map: map
+    	    
+    	    
+    	});
+</script> 
+
+<p class = "cursor">마우스를 위에 가져다놓아보셈</p>
+    
+    </body>
+</html>

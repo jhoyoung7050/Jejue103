@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>간단한 지도 표시하기</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zrbqt0f6rv"></script>
+     <link href="./styles/pDesign.css" rel="stylesheet" type="text/css" />
+    <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+</head>
+<body class = "container">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class = "nav">
+      <div class = "Pension-name">
+        <a href="pension.html" target="_self">제주에팬션 103</a>
+      </div>
+      <div class = "nav-right-items">
+        <div class = "navItem"> 
+            <a href="reservation.html" target="_self"> 예약 </a>
+        </div>
+        <div class = "navItem">
+            <a href = "map.html" target="_self">찾아오시는길</a>
+        </div>
+        <div class = "navItem">
+            <a href = "tripPoint.html" target="_self">주변볼거리</a>
+        </div>
+        <div class = "navItem">
+            <a href = "roomInfo.html" target="_self">객실안내</a>
+        </div>
+      </div>  
+    </div>
+<div id="map" style="width:100%;height:400px;"></div>
+
+<script>
+var mapOptions = {
+    center: new naver.maps.LatLng(33.271695304916086, 126.18480672457099),
+    zoom: 15
+};
+
+var map = new naver.maps.Map('map', mapOptions);
+
+var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(33.271695304916086, 126.18480672457099),
+    map: map
+});
+</script>
+
+<h4>찾아 오시는길 루트 입니다</h4>
+<p>제주공항에서 버스를 타시는 경우 <br>151,152번 타시는 경우 모슬포항 까지 오셔서 거기서 택시를 타시고 오시면 됩니다.<br>102번을 타시는 경우 사장동 앞까지 오시게 됩니다. 거기서 걸어서 밑으로 오시면 대략 15분 가량 걸어오시면 됩니다.
+<br>여름인 경우 오시면서 자연의 풍경을 느껴보시는 것도 하나의 묘미입니다.</p>
+
+<div class = "footer">
+      <ul class= "list-info">
+        <li>제주에 펜션</li>
+        <li>계좌 번호</li>
+        <li>사업자등록번호 : 670-28-00536</li>
+      </ul>
+
+        <div class = "sns-info">
+            <a href = "https://www.instagram.com/jejuepension103/" target="_blank"><i class="fab fa-instagram" ></i></a>
+        </div>
+    </div>
+
+</body>
+</html>

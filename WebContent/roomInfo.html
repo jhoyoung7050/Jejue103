@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JejuePension103</title>
+    <link href="./styles/pDesign.css" rel="stylesheet" type="text/css" />
+    <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+
+  </head>
+  <body class = "container">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class = "nav">
+      <div class = "Pension-name">
+        <a href="pension.html" target="_self">제주에팬션 103</a>
+      </div>
+      <div class = "nav-right-items">
+        <div class = "navItem"> 
+            <a href="reservation.html" target="_self"> 예약 </a>
+        </div>
+        <div class = "navItem">
+            <a href = "map.html" target="_self">찾아오시는길</a>
+        </div>
+        <div class = "navItem">
+            <a href = "tripPoint.html" target="_self">주변볼거리</a>
+        </div>
+        <div class = "navItem">
+            <a href = "roomInfo.html" target="_self">객실안내</a>
+        </div>
+      </div>  
+    </div>
+        
+
+  <div class = "introduction">
+    <div class = "text">
+      <p> 여기에 관련된 소개글을 넣겠습니다dddddddd<br>dddddddddd</br>ddddddddddddddddddddd<br>dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄻㄴㅇㄹ</br></p>
+    </div>
+  </div>
+      <div class ="imagesGroup">
+            <img src="./img/ssong.jpg" class = "roomMain" alt="My Image" width="532" height="423" style="object-fit: cover; padding-right: 8px;">
+            <div class = "vertical-images">
+                <img src="./img/ssong2.jpg" class = "roomImages"alt="My Image" width="258" height="208.79" style="object-fit: cover; padding-left: 3px; padding-right: 3px; padding-bottom: 3px;">
+                <img src="./img/jeju103.jpg" class ="roomImages" alt="My Image" width="258" height="208.79"style="object-fit: cover; padding-left: 3px; padding-right: 3px; padding-top: 3px;">
+            </div>
+            <div class = "avertical-images">
+                <img src="./img/livingroom.jpg" class ="roomImages" alt="My Image" width="258" height="208.79" style="object-fit: cover; padding-left: 3px; padding-right: 3px; padding-bottom: 3px;">
+                <img src="./img/배경.jpg" class ="roomImages" alt="My Image" width="258" height="208.79" style="object-fit: cover; padding-left: 3px; padding-right: 3px;padding-top: 3px;">
+            </div>
+        </div>
+        <div class='bigPictureWrapper'>
+          <div class='bigPicture'>
+          </div>
+        </div>
+        <script type="text/javascript">
+          $(document).ready(function (e){
+            
+            $(document).on("click","img",function(){
+              var path = $(this).attr('src')
+              showImage(path);
+            });//end click event
+            
+            function showImage(fileCallPath){
+                
+                $(".bigPictureWrapper").css("display","flex").show();
+                
+                $(".bigPicture")
+                .html("<img src='"+fileCallPath+"' >")
+                .animate({width:'100%', height: '100%'}, 100);
+                
+              }//end fileCallPath
+              
+            $(".bigPictureWrapper").on("click", function(e){
+                $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+                setTimeout(function(){
+                  $('.bigPictureWrapper').hide();
+                }, 100);
+              });//end bigWrapperClick event
+          });
+        </script>
+
+        <h1>안녕하세요</h1>
+
+    
+ 
+         
+    <div class = "footer">
+      <ul class= "list-info">
+        <li>제주에 펜션</li>
+        <li>계좌 번호</li>
+        <li>사업자등록번호 : 670-28-00536</li>
+      </ul>
+
+        <div class = "sns-info">
+            <a href = "https://www.instagram.com/jejuepension103/" target="_blank"><i class="fab fa-instagram" ></i></a>
+        </div>
+    </div>
+
+      
+ 
+  </body>
+</html>
