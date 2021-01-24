@@ -33,25 +33,156 @@
 <div id="map" style="width:100%;height:400px;"></div>
 
 <script>
-var mapOptions = {
-    center: new naver.maps.LatLng(33.271695304916086, 126.18480672457099),
-    zoom: 13
-    
-};
-
-var map = new naver.maps.Map('map', mapOptions);
-
-
-var marker = new naver.maps.Marker({
-    position: new naver.maps.LatLng(33.271695304916086, 126.18480672457099),
-    map: map
-    
-    
+var map = new naver.maps.Map('map', {
+	 center: new naver.maps.LatLng(33.37944024401334, 126.5295479803966),
+	    zoom: 10
 });
+//ㅈ도 위치로 가기
+var jejuPension = new naver.maps.LatLng(33.253649221644096, 126.1969161362736),
+	gumnungBeach = new naver.maps.LatLng(33.38994689142564, 126.23559960526426),
+    hyeopjaeBeach = new naver.maps.LatLng(33.393530010299905, 126.23959073201969),
+    cactusGunrock = new naver.maps.LatLng(33.37784162097325, 126.21492461292557),
+    chagwido = new naver.maps.LatLng(33.31303894714948, 126.14862716359602),
+    sanbangMt = new naver.maps.LatLng(33.24465565329624, 126.31202175910693),
+    marado = new naver.maps.LatLng(33.121427024869895, 126.26712036298368);
+
+//이밑으로는 마커찍는 거
+var jejuePensionMk = new naver.maps.Marker({
+    position: new naver.maps.LatLng(33.253649221644096, 126.1969161362736),
+    map:map 
+});
+ gumnungBeachMk = new naver.maps.Marker({
+    position: new naver.maps.LatLng(33.38994689142564, 126.23559960526426),
+    map:map 
+});
+
+  hyeopjaeBeachMk = new naver.maps.Marker({
+    position: new naver.maps.LatLng(33.393530010299905, 126.23959073201969),
+    map:map 
+});
+
+  cactusGunrockMk = new naver.maps.Marker({
+    position: new naver.maps.LatLng(33.37784162097325, 126.21492461292557),
+    map:map 
+});
+
+ chagwidoMk = new naver.maps.Marker({
+    position: new naver.maps.LatLng(33.31303894714948, 126.14862716359602),
+    map:map 
+});
+
+ sanbangMtMk = new naver.maps.Marker({
+    position: new naver.maps.LatLng(33.24465565329624, 126.31202175910693),
+    map:map 
+});
+
+ maradoMk = new naver.maps.Marker({
+    position: new naver.maps.LatLng(33.121427024869895, 126.26712036298368),
+    map:map 
+});
+
+ 
+
+//마우스를 위에 가져다 놓으면 작동하는 기능
+		
+$(document).ready(function(){
+	
+	 $("#jejuPension").mouseover(function() {
+					
+		 map.setCenter(jejuPension);
+		 map.setZoom(11,true);				
+	});
+//마우스 포인트가 밖으로 이동시
+	 $("#jejuPension").mouseout(function() {
+			
+		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
+		 map.setZoom(10,true);				
+	});
+			
+	$("#gumnung").mouseover( function() {
+		
+		 map.setCenter(gumnungBeach);
+		 map.setZoom(11,true);	
+	});
+	
+	$("#gumnung").mouseout(function() {
+		
+		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
+		 map.setZoom(10,true);				
+	});
+	
+	$("#hyeopjae").mouseover( function() {
+		
+		 map.setCenter(hyeopjaeBeach);
+		 map.setZoom(11,true);
+	});
+	
+	$("#hyeopjae").mouseout(function() {
+		
+		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
+		 map.setZoom(10,true);				
+	});
+	
+	$("#cactus").mouseover( function() {
+		
+		 map.setCenter(cactusGunrock);
+		 map.setZoom(11,true);
+	});
+	
+	$("#cactus").mouseout(function() {
+		
+		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
+		 map.setZoom(10,true);				
+	});
+	
+	$("#chagwido").mouseover( function() {
+		
+		 map.setCenter(chagwido);
+		 map.setZoom(11,true);	
+	});
+	
+	$("#chagwido").mouseout(function() {
+		
+		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
+		 map.setZoom(10,true);				
+	});
+	
+	$("#sanbang").mouseover( function() {
+		
+		 map.setCenter(sanbangMt);
+		 map.setZoom(11,true);
+	});
+	
+	$("#sanbang").mouseout(function() {
+		
+		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
+		 map.setZoom(10,true);				
+	});
+	
+	$("#marado").mouseover( function() {
+		
+		 map.setCenter(marado);
+		 map.setZoom(11,true);
+	});
+	
+	$("#marado").mouseout(function() {
+		
+		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
+		 map.setZoom(10,true);				
+	});
+
+	});
 </script>
 
 <h4>주변 볼거리</h4>
-<p>금능해수욕장 <br> 협재 해수욕장 <br> 선인장 군락 <br> 차귀도 <br>산방산 <br>마라도 </p>
+<div id = "jejuPension" style = "cursor: pointer">제주에펜션103</div>
+<br>
+<div id = "gumnung" style = "cursor: pointer">1.금능해수욕장</div>
+ <div id = "hyeopjae" style = "cursor: pointer">2.협재 해수욕장</div>
+  <div id ="cactus" style = "cursor: pointer"> 3.선인장 군락</div>
+  <div id = "chagwido" style = "cursor: pointer">4.차귀도 </div>
+  <div id = "sanbang" style = "cursor: pointer">5.산방산</div>
+  <div id = "marado" style = "cursor: pointer">6.마라도</div>
 
 <div class = "footer">
       <ul class= "list-info">
