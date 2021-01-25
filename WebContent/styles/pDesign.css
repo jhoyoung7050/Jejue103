@@ -244,6 +244,7 @@
 
 
 
+
 .img{
   height: 100% !important;
     width: 100% !important;
@@ -324,3 +325,9 @@
 .cursor{
 	cursor:pointer;
 }
+
+.introduction .intro{
+	text-align: center;
+}
+
+

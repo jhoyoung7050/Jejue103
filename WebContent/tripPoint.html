@@ -46,10 +46,21 @@ var jejuPension = new naver.maps.LatLng(33.253649221644096, 126.1969161362736),
     sanbangMt = new naver.maps.LatLng(33.24465565329624, 126.31202175910693),
     marado = new naver.maps.LatLng(33.121427024869895, 126.26712036298368);
 
+var HOME_PATH = window.HOME_PATH || '.';
 //이밑으로는 마커찍는 거
 var jejuePensionMk = new naver.maps.Marker({
     position: new naver.maps.LatLng(33.253649221644096, 126.1969161362736),
-    map:map 
+    map:map,
+    icon:{
+    	content:'<img src="'+ HOME_PATH +'/Jejue103Icon/new2.png" alt="" ' +
+        'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+        '-webkit-user-select: none; position: absolute; width: 25px; height: 25px; left: 0px; top: 0px;">',
+    	 size: new naver.maps.Size(100, 100),
+         origin: new naver.maps.Point(0, 0),
+         anchor: new naver.maps.Point(25, 26)
+		
+	
+    }
 });
  gumnungBeachMk = new naver.maps.Marker({
     position: new naver.maps.LatLng(33.38994689142564, 126.23559960526426),
@@ -92,12 +103,6 @@ $(document).ready(function(){
 		 map.setCenter(jejuPension);
 		 map.setZoom(11,true);				
 	});
-//마우스 포인트가 밖으로 이동시
-	 $("#jejuPension").mouseout(function() {
-			
-		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
-		 map.setZoom(10,true);				
-	});
 			
 	$("#gumnung").mouseover( function() {
 		
@@ -105,11 +110,7 @@ $(document).ready(function(){
 		 map.setZoom(11,true);	
 	});
 	
-	$("#gumnung").mouseout(function() {
-		
-		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
-		 map.setZoom(10,true);				
-	});
+
 	
 	$("#hyeopjae").mouseover( function() {
 		
@@ -117,11 +118,7 @@ $(document).ready(function(){
 		 map.setZoom(11,true);
 	});
 	
-	$("#hyeopjae").mouseout(function() {
-		
-		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
-		 map.setZoom(10,true);				
-	});
+	
 	
 	$("#cactus").mouseover( function() {
 		
@@ -129,11 +126,7 @@ $(document).ready(function(){
 		 map.setZoom(11,true);
 	});
 	
-	$("#cactus").mouseout(function() {
-		
-		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
-		 map.setZoom(10,true);				
-	});
+
 	
 	$("#chagwido").mouseover( function() {
 		
@@ -141,23 +134,14 @@ $(document).ready(function(){
 		 map.setZoom(11,true);	
 	});
 	
-	$("#chagwido").mouseout(function() {
-		
-		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
-		 map.setZoom(10,true);				
-	});
-	
+
 	$("#sanbang").mouseover( function() {
 		
 		 map.setCenter(sanbangMt);
 		 map.setZoom(11,true);
 	});
 	
-	$("#sanbang").mouseout(function() {
-		
-		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
-		 map.setZoom(10,true);				
-	});
+	
 	
 	$("#marado").mouseover( function() {
 		
@@ -165,12 +149,7 @@ $(document).ready(function(){
 		 map.setZoom(11,true);
 	});
 	
-	$("#marado").mouseout(function() {
-		
-		 map.setCenter(new naver.maps.LatLng(33.37944024401334, 126.5295479803966));
-		 map.setZoom(10,true);				
-	});
-
+	
 	});
 </script>
 
