@@ -1,14 +1,26 @@
-
+a{
+	color: white;
+	text-decoration:none
+}
 .nav{
   height: 60px;
-  border-bottom: 3px solid black;
+  border-bottom: 1px solid white;
   display: flex;
   align-items: center;
+  background-color: transparent;
+font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,Lucida,Grande,'Microsoft YaHei','Hiragino Sans GB',SimSun,Meiryo;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+    margin-left: 10%;
+    margin-right:10%;
+  
+    
   
 }
 .nav-right-items{
   display: flex;
   margin-left: auto;
+  color: white;
   
 }
 .navItem{
@@ -60,8 +72,9 @@
    
     
 }
-.container
+.containerss
 {
+	font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,Lucida,Grande,'Microsoft YaHei','Hiragino Sans GB',SimSun,Meiryo;
   margin: 0;
 
 }
@@ -271,9 +284,8 @@
     -ms-flex-wrap: wrap !important;
     flex-wrap: wrap !important;
    height: auto;
-   padding-left: 10%;
-    margin-left: 0px !important;
-    margin-right: 0px !important;
+   padding-left: 14%;
+    
    
     
 }
@@ -318,7 +330,7 @@
   width: 100%;
   padding: 50px 0;
   text-align: center;
-  background-color: lightblue;
+  background-color: white;
   margin-top: 20px;
 }
 
@@ -328,6 +340,165 @@
 
 .introduction .intro{
 	text-align: center;
+	font-size: 20px;
+    letter-spacing: -1px;
+    line-height: 28px;
+    
 }
 
+.containers .aboutPension{
+	width: auto;
+	height: 200px;
+	display: flex;
+	overflow:hidden;
+justify-content: center;
+padding-right:50px;
+ 
+
+	
+	
+
+	
+}
+
+.containers .aboutPension .hour {
+	
+  width: 20%;
+  border-right: 1px solid #73AD21;
+     
+  text-align: center;
+}
+
+.containers .aboutPension .phone{
+	
+	width: 20%;
+	border-right: 1px solid #73AD21;
+	text-align: center;
+}
+
+.containers .aboutPension .checkOut{
+	width: 20%;
+	
+	border-right: 1px solid #73AD21;
+	text-align: center;
+}
+
+.containers .aboutPension .peakSeason{
+	
+	width: 20%;
+  border: 0;
+  text-align: center;
+}
+
+ 
+ul{
+   list-style:none;
+   }
+.middleImg{
+	display : block;
+	margin : auto;
+	
+}
+
+
+.containers .innerRoom {
+	
+  width: 100%;
+ 
+  border-top: 1px solid #888;   
+  text-align: left;
+}
+
+.containers .mlivingRoom {
+	
+  width: 100%;
+ 
+  border-top: 1px solid #888;   
+  text-align: left;
+}
+.containcontainersndFloor {
+	
+  width: 100%;
+  
+  border-top: 1px solid #888;   
+  text-align: left;
+}
+
+.containers .secondFloorGarret {
+	
+  width: 100%;
+  
+  border-top: 1px solid #888;
+  text-align: left;
+}
+.containers .annexRoom {
+	
+  width: 100%;
+  
+  border-top: 1px solid #888;   
+  text-align: left;
+}
+.containers .annexGarret {
+	
+  width: 100%;
+  
+  border-top: 1px solid #888;
+     
+  text-align: left;
+}
+
+.roomInfoGuest{
+	width: 65%;
+	 margin: auto;
+	
+
+}
+
+#payment{
+	width:259px; color: #fff;  display: inline-block;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.plusMinusBtn{
+	 -webkit-box-pack: center !important;
+    -webkit-box-align: center !important;
+    -webkit-box-flex: 0 !important;
+    width: 30px !important;
+    height: 30px !important;
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: rgb(176, 176, 176) !important;
+    color: rgb(113, 113, 113) !important;
+    font-family: inherit !important;
+    outline: none !important;
+    touch-action: manipulation !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgb(255, 255, 255) !important;
+    border-radius: 50% !important;
+    font-size: 30px;
+}
 
