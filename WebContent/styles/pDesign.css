@@ -502,3 +502,27 @@ ul{
     font-size: 30px;
 }
 
+
+
+#navigationbar {
+  z-index: 1;
+ 
+  
+}
+
+/* 스크롤바 기능은쓰고 스크롤바 가려주는 기능*/
+.borders {
+
+    -ms-overflow-style: none; 
+
+    scrollbar-width: none; 
+
+}
+
+borders::-webkit-scrollbar {
+
+    display: none; 
+
+}
+
+
