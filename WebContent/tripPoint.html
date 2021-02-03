@@ -7,37 +7,87 @@
      <link href="./styles/pDesign.css" rel="stylesheet" type="text/css" />
     <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+     <link href="./styles/pricing.css" rel="stylesheet">
+    <link href="./bootstrap-4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>주변관광지</title>
+    
 </head>
-<body class = "container">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <div class = "nav">
-      <div class = "Pension-name">
-        <a href="pension.html" target="_self">제주에팬션 103</a>
-      </div>
-      <div class = "nav-right-items">
-        <div class = "navItem"> 
-            <a href="reservation.html" target="_self"> 예약 </a>
+<body class = "containers">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"  >
+          <div class = "Pension-name">
+            <a class  ="p-2 text-dark"href="pension.html" target="_self" ><h5 class="my-0 mr-md-auto font-weight-normal">제주에팬션 103</h5></a>
+          </div>
+          <nav class="my-2 my-md-0 mr-md-3" >
+          <div class = "nav-right-items">
+            <div class = "navItem"> 
+                <a class = "p-2 text-dark" href="reservation.html" target="_self" > 예약 </a>
+            </div>
+            <div class = "navItem">
+                <a class  ="p-2 text-dark" href = "map.html" target="_self" >찾아오시는길</a>
+            </div>
+            <div class = "navItem">
+                <a class  ="p-2 text-dark" href = "tripPoint.html" target="_self" >주변볼거리</a>
+            </div>
+            <div class = "navItem">
+                <a class  ="p-2 text-dark"  href = "roomInfo.html" target="_self" >객실안내</a>
+            </div>
+          </div> 
+          </nav>
         </div>
-        <div class = "navItem">
-            <a href = "map.html" target="_self">찾아오시는길</a>
+    
+    
+
+    <div class = borders style ="float: left; width: 50%; z-index: 3; overflow-x:hidden; width:50%; height:500px;">
+<h4>주변 볼거리</h4>
+<div id = "jejuPension" style = "cursor: pointer; border-bottom: 1px solid;">제주에펜션103</div>
+<br>
+<div id = "gumnung" style = "cursor: pointer"><img  class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>1.금능해수욕장</div>
+ <div id = "hyeopjae" style = "cursor: pointer"><img class = "images" src="./img/hyeopjae.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>2.협재 해수욕장</div>
+  <div id ="cactus" style = "cursor: pointer"><img class = "images" src="./img/cactus.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/> 3.선인장 군락</div>
+  <div id = "chagwido" style = "cursor: pointer"><img class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>4.차귀도 </div>
+  <div id = "sanbang" style = "cursor: pointer"><img class = "images" src="./img/sanbangsan.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>5.산방산</div>
+  <div id = "marado" style = "cursor: pointer"><img class = "images" src="./img/marado.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>6.마라도</div>
+  </div>
+  <div id="map" style="width: 50%; height:600px;  float: right;  bottom:16px;"></div>
+  <div class='bigPictureWrapper'>
+          <div class='bigPicture'>
+          </div>
         </div>
-        <div class = "navItem">
-            <a href = "tripPoint.html" target="_self">주변볼거리</a>
-        </div>
-        <div class = "navItem">
-            <a href = "roomInfo.html" target="_self">객실안내</a>
-        </div>
-      </div>  
-    </div>
-<div id="map" style="width:100%;height:400px;"></div>
+  
+   <script type="text/javascript">
+   //이미지 커지게 해주는 기능
+          $(document).ready(function (e){
+            
+            $(document).on("click",".images",function(){
+              var path = $(this).attr('src')
+              showImage(path);
+            });//end click event
+            
+            function showImage(fileCallPath){
+                
+                $(".bigPictureWrapper").css("display","flex").show();
+                
+                $(".bigPicture")
+                .html("<img  src='"+fileCallPath+"' >")
+                .animate({width:'100%', height: '100%'}, 100);
+                
+              }//end fileCallPath
+              
+            $(".bigPictureWrapper").on("click", function(e){
+                $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+                setTimeout(function(){
+                  $('.bigPictureWrapper').hide();
+                }, 100);
+              });//end bigWrapperClick event
+          });
+          </script>
 
 <script>
 var map = new naver.maps.Map('map', {
 	 center: new naver.maps.LatLng(33.37944024401334, 126.5295479803966),
 	    zoom: 10
 });
-//ㅈ도 위치로 가기
+//지도 위치로 가기
 var jejuPension = new naver.maps.LatLng(33.253649221644096, 126.1969161362736),
 	gumnungBeach = new naver.maps.LatLng(33.38994689142564, 126.23559960526426),
     hyeopjaeBeach = new naver.maps.LatLng(33.393530010299905, 126.23959073201969),
@@ -153,17 +203,9 @@ $(document).ready(function(){
 	});
 </script>
 
-<h4>주변 볼거리</h4>
-<div id = "jejuPension" style = "cursor: pointer">제주에펜션103</div>
-<br>
-<div id = "gumnung" style = "cursor: pointer">1.금능해수욕장</div>
- <div id = "hyeopjae" style = "cursor: pointer">2.협재 해수욕장</div>
-  <div id ="cactus" style = "cursor: pointer"> 3.선인장 군락</div>
-  <div id = "chagwido" style = "cursor: pointer">4.차귀도 </div>
-  <div id = "sanbang" style = "cursor: pointer">5.산방산</div>
-  <div id = "marado" style = "cursor: pointer">6.마라도</div>
 
-<div class = "footer">
+
+<div class = "footer" style ="position: fixed;">
       <ul class= "list-info">
         <li>제주에 펜션</li>
         <li>계좌 번호</li>

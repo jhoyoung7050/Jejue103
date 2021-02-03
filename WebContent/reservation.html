@@ -2,13 +2,29 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <title>JejuePension103</title>
         <link href="./styles/pDesign.css" rel="stylesheet" type="text/css" />
         <link href="./styles/Calendar.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
         <link href="./styles/pricing.css" rel="stylesheet">
         <link href="./bootstrap-4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <meta property="og:url" content="http://www.pigno.se/barn/PIGNOSE-Calendar">
+        <meta property="og:type" content="product"/>
+        <meta property="og:title" content="PIGNOSE Calendar"/>
+        <meta property="og:description" content="PIGNOSE Calendar is beautiful and eidetic jQuery date picker plugin"/>
+        <meta property="og:image" content="http://www.pigno.se/barn/PIGNOSE-Calendar/demo/img/cover@250.png"/>
+        <meta property="og:site_name" content="PIGNOSE"/>
+        <title>PIGNOSE Calendar</title>
+        <meta name="description" content="PIGNOSE Calendar is beautiful and eidetic jQuery date picker plugin"/>
+        <link rel="shortcut icon" type="image/x-icon" href="demo/img/pignose-ico.ico"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/themes/prism.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/icon.min.css">
+        <link rel="stylesheet" type="text/css" href="./pg-calendar/demo/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="./pg-calendar/demo/css/ui.css"/>
+        <link rel="stylesheet" type="text/css" href="./pg-calendar/dist/css/pignose.calendar.min.css"/>
         
         <style>
       .bd-placeholder-img {
@@ -28,10 +44,14 @@
     </style>
     <!-- 스티키추가예정  ------->
       </head>
+    
       <body class = "containers">
       
+  
+
+      
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"  >
           <div class = "Pension-name">
             <a class  ="p-2 text-dark"href="pension.html" target="_self" ><h5 class="my-0 mr-md-auto font-weight-normal">제주에팬션 103</h5></a>
           </div>
@@ -49,41 +69,18 @@
             <div class = "navItem">
                 <a class  ="p-2 text-dark"  href = "roomInfo.html" target="_self" >객실안내</a>
             </div>
-          </div>  
+          </div> 
           </nav>
         </div>
-
-<h2 style ="text-align:center;">예약하기</h2>
-      
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, user-scalable=no"/>
-        <meta property="og:url" content="http://www.pigno.se/barn/PIGNOSE-Calendar">
-        <meta property="og:type" content="product"/>
-        <meta property="og:title" content="PIGNOSE Calendar"/>
-        <meta property="og:description" content="PIGNOSE Calendar is beautiful and eidetic jQuery date picker plugin"/>
-        <meta property="og:image" content="http://www.pigno.se/barn/PIGNOSE-Calendar/demo/img/cover@250.png"/>
-        <meta property="og:site_name" content="PIGNOSE"/>
-        <title>PIGNOSE Calendar</title>
-        <meta name="description" content="PIGNOSE Calendar is beautiful and eidetic jQuery date picker plugin"/>
-        <link rel="shortcut icon" type="image/x-icon" href="demo/img/pignose-ico.ico"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/themes/prism.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/icon.min.css">
-        <link rel="stylesheet" type="text/css" href="./pg-calendar/demo/css/style.css"/>
-        <link rel="stylesheet" type="text/css" href="./pg-calendar/demo/css/ui.css"/>
-        <link rel="stylesheet" type="text/css" href="./pg-calendar/dist/css/pignose.calendar.min.css"/>
-    </head>
-    
-    <body>
-  
-        <div class="header">
-        </div>
+        
+        <h2 style ="text-align:center;">예약하기</h2>
+       
         
         <div id="disabled-range" class="article" style = "border-top-width: 0px; margin-top: 0px; padding-top: 0px;">
             <div class="disabled-range-calendar"></div>
             <div class="box"></div>
         </div>
+        
         
           
                
@@ -194,7 +191,22 @@
         </div>
      
         </div>
-    
+    		<script>
+		//sticky bar 함수
+			window.onscroll = function() {myFunction()};
+			
+			var navbar = document.getElementById("navigationbar");
+			var sticky = navbar.offsetTop;
+			
+			function myFunction() {
+			  if (window.pageYOffset >= sticky) {
+			    navbar.classList.add("sticky")
+			  } else {
+			    navbar.classList.remove("sticky");
+			  }
+			}
+		</script>
+      
         
 
         <script >
@@ -243,10 +255,7 @@
                   
               	}
            
-          
-            
-           
-                      
+         
         </script>
         
        
@@ -364,7 +373,7 @@
          
          
          
-        <div class = "footer">
+        <div class = "footer" >
           <ul class= "list-info">
             <li>제주에 펜션</li>
             <li>계좌 번호</li>
