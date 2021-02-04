@@ -1,7 +1,12 @@
 a{
 	color: white;
-	text-decoration:none
+	text-decoration:none!important;
+
+	
 }
+
+
+
 .nav{
   height: 60px;
   border-bottom: 1px solid white;
@@ -455,7 +460,9 @@ ul{
 }
 
 #payment{
-	width:259px; color: #fff;  display: inline-block;
+	width:259px; 
+	color: #fff;  
+	display: inline-block;
     font-weight: 400;
     color: white;
     text-align: center;

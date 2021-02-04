@@ -41,11 +41,16 @@
           font-size: 3.5rem;
         }
       }
-    </style>
+</style>
+
+
+
+
     <!-- 스티키추가예정  ------->
       </head>
     
-      <body class = "containers" >
+      <body class = "containers">
+      
       
   
 
@@ -58,99 +63,101 @@
           <nav class="my-2 my-md-0 mr-md-3" >
           <div class = "nav-right-items">
             <div class = "navItem"> 
-                <a class = "p-2 text-dark" href="reservation.html" target="_self" > 예약 </a>
+                <a class = "p-2 text-dark"  href="reservation.html" target="_self" style ="border-bottom: 1px solid!important;"> 예약 </a>
             </div>
             <div class = "navItem">
-                <a class  ="p-2 text-dark" href = "map.html" target="_self" >찾아오시는길</a>
+                <a id = "itemForNav"  class  ="p-2 text-dark" href = "map.html" target="_self" >찾아오시는길</a>
             </div>
             <div class = "navItem">
-                <a class  ="p-2 text-dark" href = "tripPoint.html" target="_self" >주변볼거리</a>
+                <a  id = "itemForNav" class  ="p-2 text-dark" href = "tripPoint.html" target="_self" >주변볼거리</a>
             </div>
             <div class = "navItem">
-                <a class  ="p-2 text-dark"  href = "roomInfo.html" target="_self" >객실안내</a>
+                <a  id = "itemForNav" class  ="p-2 text-dark"  href = "roomInfo.html" target="_self" >객실안내</a>
             </div>
           </div> 
           </nav>
         </div>
-        
-        <h2 style ="text-align:center;">예약하기</h2>
+     
+  
+
+
+       
        
         
         
         
           
-               
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
-    <script type="text/javascript" src="./pg-calendar/dist/js/pignose.calendar.full.min.js"></script>
-    <script type="text/javascript">
-        //<![CDATA[
-        	var precalculation=0;
-        	
-        	
-        $(function () {
-            $('#wrapper .version strong').text('v' + $.fn.pignoseCalendar.version);
-    
-            function onSelectHandler(date, context) {
-                /**
-                 * @date is an array which be included dates(clicked date at first index)
-                 * @context is an object which stored calendar interal data.
-                 * @context.calendar is a root element reference.
-                 * @context.calendar is a calendar element reference.
-                 * @context.storage.activeDates is all toggled data, If you use toggle type calendar.
-                 * @context.storage.events is all events associated to this date
-                 */
-    
-                var $element = context.element;
-                var $calendar = context.calendar;
-                var $box = $element.siblings('.box').show();
-                var text = '선택하신날짜:  ';
-                var sDate = date[0];
-                var eDate = date[1];
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+        <script type="text/javascript" src="./pg-calendar/dist/js/pignose.calendar.full.min.js"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            	var precalculation=0;
+            	
+            	
+            $(function () {
+                $('#wrapper .version strong').text('v' + $.fn.pignoseCalendar.version);
+        
+                function onSelectHandler(date, context) {
+                    /**
+                     * @date is an array which be included dates(clicked date at first index)
+                     * @context is an object which stored calendar interal data.
+                     * @context.calendar is a root element reference.
+                     * @context.calendar is a calendar element reference.
+                     * @context.storage.activeDates is all toggled data, If you use toggle type calendar.
+                     * @context.storage.events is all events associated to this date
+                     */
+        
+                    var $element = context.element;
+                    var $calendar = context.calendar;
+                    var $box = $element.siblings('.box').show();
+                    var text = '선택하신날짜:  ';
+                    var sDate = date[0];
+                    var eDate = date[1];
 
-                if (date[0] !== null) {
-                    text += date[0].format('YYYY-MM-DD');
-                }
-    
-                if (date[0] !== null && date[1] !== null) {
-                    text += ' ~ ';
-                    // 몇일 묵는지 날짜 계산 마지막날 - 첫날 = 몇일 인지
-                    precalculation =Math.ceil((eDate-sDate)/(1000*60*60*24));
+                    if (date[0] !== null) {
+                        text += date[0].format('YYYY-MM-DD');
+                    }
+        
+                    if (date[0] !== null && date[1] !== null) {
+                        text += ' ~ ';
+                        // 몇일 묵는지 날짜 계산 마지막날 - 첫날 = 몇일 인지
+                        precalculation =Math.ceil((eDate-sDate)/(1000*60*60*24));
 
+                    }
+                    else if (date[0] === null && date[1] == null) {
+                        text += '선택한날 없음';
+                    }
+        
+                    if (date[1] !== null) {
+                        text += date[1].format('YYYY-MM-DD');
+                    }
+        
+                    $box.text(text);
+                    
                 }
-                else if (date[0] === null && date[1] == null) {
-                    text += '선택한날 없음';
-                }
-    
-                if (date[1] !== null) {
-                    text += date[1].format('YYYY-MM-DD');
-                }
-    
-                $box.text(text);
-                
-            }
-    
         
             
-            //팬션 103 에 넣을 달력
-            let tDay = new Date();
-            let calDate = tDay.getDate(28);
-            // Disabled Range Calendar.
-            var minDate = moment().set('dates', calDate ).format('YYYY-MM-DD');
-            var maxDate = moment().set('dates', Math.max(moment().day(), 365)).format('YYYY-MM-DD');
-            $('.disabled-range-calendar').pignoseCalendar({
-                select: onSelectHandler,
-                minDate: minDate,
-                maxDate: maxDate,
                 
-                pickWeeks: false,
-                multiple: true,
+                //팬션 103 에 넣을 달력
+                let tDay = new Date();
+                let calDate = tDay.getDate(28);
+                // Disabled Range Calendar.
+                var minDate = moment().set('dates', calDate ).format('YYYY-MM-DD');
+                var maxDate = moment().set('dates', Math.max(moment().day(), 365)).format('YYYY-MM-DD');
+                $('.disabled-range-calendar').pignoseCalendar({
+                    select: onSelectHandler,
+                    minDate: minDate,
+                    maxDate: maxDate,
+                    
+                    pickWeeks: false,
+                    multiple: true,
+                });
+          
             });
-      
-        });
-        //]]>
-    </script>
+            //]]>
+        </script>
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/prism.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-javascript.min.js"></script>
@@ -162,7 +169,48 @@
 
     <!-- 예약 드롭박스 관련 . -->
 
-   <div class = container style ="margin-bottom:100px;">
+   <div class = container>
+     <h2 style="text-align:center;">요금표</h2>
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Type A</h4>
+      </div>
+      <div class="card-body" style = "padding-top:15%">
+        <h1 class="card-title pricing-card-title">400,000￦</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>성인 0~4인 기준입니다</li>
+        </ul>
+        
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Type B</h4>
+      </div>
+      <div class="card-body" style = "padding-top:15%">
+        <h1 class="card-title pricing-card-title">500,000￦ </h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>성인 8인 기준입니다</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Type C</h4>
+      </div>
+      <div class="card-body" style = "padding-top:15%">
+        <h1 class="card-title pricing-card-title">600,000￦</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>성인 12인 기준입니다</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+        <h3>유의사항: 4인 이상 초과시 성인 인당 25,000원 추가 입니다. 유아 3세~초등학생 10,000원 추가, 아기는 공짜입니다!</h3>
+        
    <div class = "calSide" style =" height:575px; ">
    <div class = boxAndCal style = "width:50%;height:auto; float:left!important;">
    <div id="disabled-range" class="article" style = "border-top-width: 0px; margin-top: 0px; padding-top: 0px; ">
@@ -173,7 +221,7 @@
             </div>
             
         </div>
-       <div class = nextCal style ="float: right!important; width:50%!important; padding-top:10%;">
+       <div class = nextCal style ="float: right!important; width:50%!important; padding-top:3%;">
       <h3 style ="text-align:center;"><b>인원수를 입력해주세요</b></h3>
       <br>
      
@@ -199,27 +247,20 @@
         </div>
      
         </div>
+          
+        <!-- 미리계산된 결과값 보여주기 . -->
+        <div class ="forShadow">
+        <div id ="paymentTag" style = "width:328px; margin-left:auto; margin-right:auto; text-color:black; box-shadow: 0 -3px 8px gray;float:right; margin-right:115px;" >내실금액은 0 <small><br>
+        내용을 수정한 경우 미리계산 버튼을 한번더 눌러주세요</small> </div> 
+        
+         <!-- 미리 계산 해보기 버튼 . -->
+        <input id = "payment" type = "button" onclick = " finalCalculation(precalculation,'text','text1')" value = "미리계산하기" style = "width:328px; float:right; margin-right:115px;" /><br>
+        </div>
         
         </div>
-    		<script>
-		//sticky bar 함수
-			window.onscroll = function() {myFunction()};
-			
-			var navbar = document.getElementById("navigationbar");
-			var sticky = navbar.offsetTop;
-			
-			function myFunction() {
-			  if (window.pageYOffset >= sticky) {
-			    navbar.classList.add("sticky")
-			  } else {
-			    navbar.classList.remove("sticky");
-			  }
-			}
-		</script>
-      
         
 
-        <script >
+        <script>
           // 폼값 증가&감소
         
             function form_btn(n,a){
@@ -270,57 +311,10 @@
         
        
         
-       <h2>요금표</h2>
-  <div class="card-deck mb-3 text-center">
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Type A</h4>
-      </div>
-      <div class="card-body" style = "padding-top:15%">
-        <h1 class="card-title pricing-card-title">400,000￦</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>성인 0~4인 기준입니다</li>
-        </ul>
-        
-      </div>
-    </div>
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Type B</h4>
-      </div>
-      <div class="card-body" style = "padding-top:15%">
-        <h1 class="card-title pricing-card-title">500,000￦ </h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>성인 8인 기준입니다</li>
-        </ul>
-      </div>
-    </div>
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Type C</h4>
-      </div>
-      <div class="card-body" style = "padding-top:15%">
-        <h1 class="card-title pricing-card-title">600,000￦</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>성인 12인 기준입니다</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-        <h3>유의사항: 4인 이상 초과시 성인 인당 25,000원 추가 입니다. 유아 3세~초등학생 10,000원 추가, 아기는 공짜입니다!</h3>
+     
         
         <div class = "allup-line" style ="text-align:center;">
-        <!-- 미리계산된 결과값 보여주기 . -->
-        
-        <div id ="paymentTag" style = "width:328px; margin-left:auto; margin-right:auto; text-color:black; box-shadow: 0 0 15px gray;padding-bottom:0px; float:left; margin-left:100px;">내실금액은 0 
-        <!-- 미리 계산 해보기 버튼 . -->
-        <input id = "payment" type = "button" onclick = " finalCalculation(precalculation,'text','text1')" value = "미리계산하기" style = "width:328px; margin-top:50px;" /><br>
-        </div> 
-      
-         
-        
+     
         
          <!-- 결제하기 버튼을 누르게 되면 성함과 전화번호 적는칸으로 넘어감. --> 
           
@@ -329,7 +323,7 @@
         <!-- 결과값 받아와서 유저들은 못보게끔처리 하는 과정 --> 
             <p><input type = "hidden" name = "tPayment" id = "pw2" value = "" ></p>
             
-            <button id = "payment" type='submit' style = "height:160px!important; width:328px!important; margin-top:20px;">결제하기</button>
+            <button id = "payment" type='submit' style = "width:80%!important; height:50px!important;">결제하기</button>
             </form>
         
          </div>
@@ -344,6 +338,7 @@
               
         
          <script>
+         
          // 돈계산 된거 넘겨주는 함수이다
          
          function onlyYes(a,b,c)
