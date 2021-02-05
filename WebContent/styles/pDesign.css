@@ -319,12 +319,14 @@ font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,
 	background-color: gray; 
 	z-index: 100;
 	background:rgba(255,255,255,0.5);
+	overflow-y:hidden;
 }
 .bigPicture {
 	position: relative;
-	display:flex;
+	display:none;
 	justify-content: center;
 	align-items: center;
+	overflow-y:hidden;
 }
 		
 .bigPicture img {
@@ -526,11 +528,13 @@ ul{
 
 }
 
-borders::-webkit-scrollbar {
+.borders::-webkit-scrollbar {
 
     display: none; 
 
 }
+
+
 
 
 
