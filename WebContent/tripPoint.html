@@ -37,22 +37,66 @@
     
     
 
-    <div class = borders style ="float: left;  z-index: 3; overflow-x:hidden; width:50%; height:500px;">
+    <div class = borders  style ="float: left;  z-index: 3;  width:50%; height:520px; overflow-x:hidden; ">
 <h4>주변 볼거리</h4>
 <div id = "jejuPension" style = "cursor: pointer; border-bottom: 1px solid;">제주에펜션103</div>
 <br>
-<div id = "gumnung" style = "cursor: pointer"><img  class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>1.금능해수욕장</div>
- <div id = "hyeopjae" style = "cursor: pointer"><img class = "images" src="./img/hyeopjae.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>2.협재 해수욕장</div>
-  <div id ="cactus" style = "cursor: pointer"><img class = "images" src="./img/cactus.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/> 3.선인장 군락</div>
-  <div id = "chagwido" style = "cursor: pointer"><img class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>4.차귀도 </div>
-  <div id = "sanbang" style = "cursor: pointer"><img class = "images" src="./img/sanbangsan.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>5.산방산</div>
-  <div id = "marado" style = "cursor: pointer"><img class = "images" src="./img/marado.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>6.마라도</div>
+
+
+<div id = "gumnung"  style = "cursor: pointer; "><img  class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px;  margin-bottom: 20px;"/>금능해수욕장</div>
+ <div id = "hyeopjae" style = "cursor: pointer; border-top: 1px solid;"><img class = "images1" src="./img/hyeopjae.jpg" style ="width:300px; height: 200px; border-radius: 30px; margin-top: 20px; margin-bottom: 20px;"/>협재 해수욕장</div>
+  <div id ="cactus"  style = "cursor: pointer; border-top: 1px solid;"><img class = "images2" src="./img/cactus.jpg" style ="width:300px; height: 200px; border-radius: 30px; margin-top: 20px; margin-bottom: 20px; "/>선인장 군락</div>
+  <div id = "chagwido"  style = "cursor: pointer; border-top: 1px solid;"><img class = "images3" src="./img/chagido.jpg" style ="width:300px; height: 200px; border-radius: 30px; margin-top: 20px; margin-bottom: 20px; "/>차귀도 </div>
+  <div id = "sanbang"  style = "cursor: pointer; border-top: 1px solid;"><img class = "images4" src="./img/sanbangsan.jpg" style ="width:300px; height: 200px; border-radius: 30px; margin-top: 20px; margin-bottom: 20px;"/>산방산</div>
+  <div id = "marado"  style = "cursor: pointer; border-top: 1px solid; "><img class = "images5" src="./img/marado.jpg" style ="width:300px; height: 200px; margin-top: 20px; border-radius: 30px; margin-bottom: 20px;"/>마라도</div>
+  
+  
   </div>
   <div id="map" style="width: 50%; height:600px;  float: right;  bottom:16px;"></div>
+  
+  
   <div class='bigPictureWrapper'>
-          <div class='bigPicture'>
-          </div>
-        </div>
+ 
+
+  <img  src ="./img/prev.png"class="next" onclick="plusSlides(-1)" style ="margin-left: 20%;cursor: pointer;"/>
+    <div class='bigPicture'>
+    </div>
+   <img src = "./img/next.png" class="next" onclick="plusSlides(1)"  style = "margin-right: 20%; cursor: pointer;"/>
+   
+   <img src = "./img/out.png" class ="out" style ="top: 8px;right: 16px; position: absolute;cursor: pointer;"/>
+ 
+ 
+    </div>
+    
+    <script>
+		// 슬라이드쇼 이베느
+		var slideIndex = 1;
+		showSlides(slideIndex);
+		
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+		
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+		
+		function showSlides(n) {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		  if (n > slides.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+		      slides[i].style.display = "none";  
+		  }
+		  slides[slideIndex-1].style.display = "block";  
+	
+		}
+		</script>
+    
+      
+    
+    
   
    <script type="text/javascript">
    //이미지 커지게 해주는 기능
@@ -66,21 +110,177 @@
             function showImage(fileCallPath){
                 
                 $(".bigPictureWrapper").css("display","flex").show();
+            
                 
                 $(".bigPicture")
-                .html("<img  src='"+fileCallPath+"' >")
-                .animate({width:'100%', height: '100%'}, 100);
-                
+                .html(" <div class = innerBox><div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/marado.jpg></div></div>")
+                .animate({width:'100%', height: '100%'}, 100).css("display","block").show();
+                  
               }//end fileCallPath
               
-            $(".bigPictureWrapper").on("click", function(e){
+            $(".out").on("click", function(e){
                 $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
                 setTimeout(function(){
                   $('.bigPictureWrapper').hide();
                 }, 100);
               });//end bigWrapperClick event
           });
+   
+          $(document).ready(function (e){
+              
+              $(document).on("click",".images1",function(){
+                var path = $(this).attr('src')
+                showImage(path);
+              });//end click event
+              
+              function showImage(fileCallPath){
+                  
+                  $(".bigPictureWrapper").css("display","flex").show();
+                  
+                  $(".bigPicture")
+                  .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+                  .animate({width:'100%', height: '100%'}, 100).show();
+                    
+                }//end fileCallPath
+                
+              $(".out").on("click", function(e){
+                  $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+                  setTimeout(function(){
+                    $('.bigPictureWrapper').hide();
+                  }, 100);
+                });//end bigWrapperClick event
+            });
+  $(document).ready(function (e){
+              
+              $(document).on("click",".images1",function(){
+                var path = $(this).attr('src')
+                showImage(path);
+              });//end click event
+              
+              function showImage(fileCallPath){
+                  
+                  $(".bigPictureWrapper").css("display","flex").show();
+                  
+                  $(".bigPicture")
+                  .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+                  .animate({width:'100%', height: '100%'}, 100).show();
+                    
+                }//end fileCallPath
+                
+              $(".out").on("click", function(e){
+                  $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+                  setTimeout(function(){
+                    $('.bigPictureWrapper').hide();
+                  }, 100);
+                });//end bigWrapperClick event
+            });
+              
+  $(document).ready(function (e){
+      
+      $(document).on("click",".images2",function(){
+        var path = $(this).attr('src')
+        showImage(path);
+      });//end click event
+      
+      function showImage(fileCallPath){
+          
+          $(".bigPictureWrapper").css("display","flex").show();
+          
+          $(".bigPicture")
+          .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+          .animate({width:'100%', height: '100%'}, 100).show();
+            
+        }//end fileCallPath
+        
+      $(".out").on("click", function(e){
+          $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+          setTimeout(function(){
+            $('.bigPictureWrapper').hide();
+          }, 100);
+        });//end bigWrapperClick event
+    });
+      
+  $(document).ready(function (e){
+      
+      $(document).on("click",".images3",function(){
+        var path = $(this).attr('src')
+        showImage(path);
+      });//end click event
+      
+      function showImage(fileCallPath){
+          
+          $(".bigPictureWrapper").css("display","flex").show();
+          
+          $(".bigPicture")
+          .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+          .animate({width:'100%', height: '100%'}, 100).show();
+            
+        }//end fileCallPath
+        
+      $(".out").on("click", function(e){
+          $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+          setTimeout(function(){
+            $('.bigPictureWrapper').hide();
+          }, 100);
+        });//end bigWrapperClick event
+    });
+      
+  $(document).ready(function (e){
+      
+      $(document).on("click",".images4",function(){
+        var path = $(this).attr('src')
+        showImage(path);
+      });//end click event
+      
+      function showImage(fileCallPath){
+          
+          $(".bigPictureWrapper").css("display","flex").show();
+          
+          $(".bigPicture")
+          .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+          .animate({width:'100%', height: '100%'}, 100).show();
+            
+        }//end fileCallPath
+        
+      $(".out").on("click", function(e){
+          $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+          setTimeout(function(){
+            $('.bigPictureWrapper').hide();
+          }, 100);
+        });//end bigWrapperClick event
+    });
+ $(document).ready(function (e){
+      
+      $(document).on("click",".images5",function(){
+        var path = $(this).attr('src')
+        showImage(path);
+      });//end click event
+      
+      function showImage(fileCallPath){
+          
+          $(".bigPictureWrapper").css("display","flex").show();
+          
+          $(".bigPicture")
+          .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+          .animate({width:'100%', height: '100%'}, 100).show();
+            
+        }//end fileCallPath
+        
+      $(".out").on("click", function(e){
+          $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+          setTimeout(function(){
+            $('.bigPictureWrapper').hide();
+          }, 100);
+        });//end bigWrapperClick event
+    });
+      
+      
+              
+         
           </script>
+  
+		
+
 
 <script>
 var map = new naver.maps.Map('map', {

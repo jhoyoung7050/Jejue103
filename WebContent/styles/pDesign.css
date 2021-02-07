@@ -326,11 +326,28 @@ font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,
 	display:none;
 	justify-content: center;
 	align-items: center;
-	overflow-y:hidden;
+	
 }
 		
 .bigPicture img {
-	width:1000px;
+	width:790px;
+	height:652px;
+	text-align: center;
+
+}
+
+.innerBox{
+	overflow:hidden;
+	padding-top: 50px;
+	
+	height:563px;
+	
+}
+.innerBox img{
+	overflow:hidden;
+	padding-top: 50px;
+	
+	
 }
 
 #paymentTag{

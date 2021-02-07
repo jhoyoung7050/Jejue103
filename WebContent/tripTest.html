@@ -37,7 +37,7 @@
     
     
 
-    <div class = borders  style ="float: left;  z-index: 3;  width:50%; height:500px; overflow-x:hidden; ">
+    <div class = borders  style ="float: left;  z-index: 3;  width:50%; height:520px; overflow-x:hidden; ">
 <h4>주변 볼거리</h4>
 <div id = "jejuPension" style = "cursor: pointer; border-bottom: 1px solid;">제주에펜션103</div>
 <br>
@@ -45,10 +45,10 @@
 
 <div id = "gumnung"  style = "cursor: pointer"><img  class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>금능해수욕장</div>
  <div id = "hyeopjae" style = "cursor: pointer"><img class = "images1" src="./img/hyeopjae.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>협재 해수욕장</div>
-  <div id ="cactus"  style = "cursor: pointer"><img class = "images" src="./img/cactus.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/> 선인장 군락</div>
-  <div id = "chagwido"  style = "cursor: pointer"><img class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>차귀도 </div>
-  <div id = "sanbang"  style = "cursor: pointer"><img class = "images" src="./img/sanbangsan.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>산방산</div>
-  <div id = "marado"  style = "cursor: pointer"><img class = "images" src="./img/marado.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>마라도</div>
+  <div id ="cactus"  style = "cursor: pointer"><img class = "images2" src="./img/cactus.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>선인장 군락</div>
+  <div id = "chagwido"  style = "cursor: pointer"><img class = "images3" src="./img/chagido.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>차귀도 </div>
+  <div id = "sanbang"  style = "cursor: pointer"><img class = "images4" src="./img/sanbangsan.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>산방산</div>
+  <div id = "marado"  style = "cursor: pointer"><img class = "images5" src="./img/marado.jpg" style ="width:300px; height: 200px; border-radius: 30px; "/>마라도</div>
   
   
   </div>
@@ -58,13 +58,12 @@
   <div class='bigPictureWrapper'>
  
 
-  <button class="next" onclick="plusSlides(-1)" value = "prev">prev</button>
-    <div class='bigPicture' >
+  <img  src ="./img/prev.png"class="next" onclick="plusSlides(-1)" style ="margin-left: 20%;cursor: pointer;"/>
+    <div class='bigPicture'>
     </div>
-     
-   <button class="next" onclick="plusSlides(1)" value = "next">next</button>
+   <img src = "./img/next.png" class="next" onclick="plusSlides(1)"  style = "margin-right: 20%; cursor: pointer;"/>
    
-   <button class ="out">out</button>
+   <img src = "./img/out.png" class ="out" style ="top: 8px;right: 16px; position: absolute;cursor: pointer;"/>
  
  
     </div>
@@ -114,7 +113,7 @@
             
                 
                 $(".bigPicture")
-                .html(" <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/marado.jpg></div>")
+                .html(" <div class = innerBox><div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/marado.jpg></div></div>")
                 .animate({width:'100%', height: '100%'}, 100).css("display","block").show();
                   
               }//end fileCallPath
@@ -139,7 +138,7 @@
                   $(".bigPictureWrapper").css("display","flex").show();
                   
                   $(".bigPicture")
-                  .html("<div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div>")
+                  .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
                   .animate({width:'100%', height: '100%'}, 100).show();
                     
                 }//end fileCallPath
@@ -151,6 +150,131 @@
                   }, 100);
                 });//end bigWrapperClick event
             });
+  $(document).ready(function (e){
+              
+              $(document).on("click",".images1",function(){
+                var path = $(this).attr('src')
+                showImage(path);
+              });//end click event
+              
+              function showImage(fileCallPath){
+                  
+                  $(".bigPictureWrapper").css("display","flex").show();
+                  
+                  $(".bigPicture")
+                  .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+                  .animate({width:'100%', height: '100%'}, 100).show();
+                    
+                }//end fileCallPath
+                
+              $(".out").on("click", function(e){
+                  $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+                  setTimeout(function(){
+                    $('.bigPictureWrapper').hide();
+                  }, 100);
+                });//end bigWrapperClick event
+            });
+              
+  $(document).ready(function (e){
+      
+      $(document).on("click",".images2",function(){
+        var path = $(this).attr('src')
+        showImage(path);
+      });//end click event
+      
+      function showImage(fileCallPath){
+          
+          $(".bigPictureWrapper").css("display","flex").show();
+          
+          $(".bigPicture")
+          .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+          .animate({width:'100%', height: '100%'}, 100).show();
+            
+        }//end fileCallPath
+        
+      $(".out").on("click", function(e){
+          $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+          setTimeout(function(){
+            $('.bigPictureWrapper').hide();
+          }, 100);
+        });//end bigWrapperClick event
+    });
+      
+  $(document).ready(function (e){
+      
+      $(document).on("click",".images3",function(){
+        var path = $(this).attr('src')
+        showImage(path);
+      });//end click event
+      
+      function showImage(fileCallPath){
+          
+          $(".bigPictureWrapper").css("display","flex").show();
+          
+          $(".bigPicture")
+          .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+          .animate({width:'100%', height: '100%'}, 100).show();
+            
+        }//end fileCallPath
+        
+      $(".out").on("click", function(e){
+          $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+          setTimeout(function(){
+            $('.bigPictureWrapper').hide();
+          }, 100);
+        });//end bigWrapperClick event
+    });
+      
+  $(document).ready(function (e){
+      
+      $(document).on("click",".images4",function(){
+        var path = $(this).attr('src')
+        showImage(path);
+      });//end click event
+      
+      function showImage(fileCallPath){
+          
+          $(".bigPictureWrapper").css("display","flex").show();
+          
+          $(".bigPicture")
+          .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+          .animate({width:'100%', height: '100%'}, 100).show();
+            
+        }//end fileCallPath
+        
+      $(".out").on("click", function(e){
+          $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+          setTimeout(function(){
+            $('.bigPictureWrapper').hide();
+          }, 100);
+        });//end bigWrapperClick event
+    });
+ $(document).ready(function (e){
+      
+      $(document).on("click",".images5",function(){
+        var path = $(this).attr('src')
+        showImage(path);
+      });//end click event
+      
+      function showImage(fileCallPath){
+          
+          $(".bigPictureWrapper").css("display","flex").show();
+          
+          $(".bigPicture")
+          .html("<div class = innerBox> <div class = mySlides><img  src='"+fileCallPath+"' ></div><div class = mySlides> <img src =./img/cactus.jpg></div></div>")
+          .animate({width:'100%', height: '100%'}, 100).show();
+            
+        }//end fileCallPath
+        
+      $(".out").on("click", function(e){
+          $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+          setTimeout(function(){
+            $('.bigPictureWrapper').hide();
+          }, 100);
+        });//end bigWrapperClick event
+    });
+      
+      
               
          
           </script>
