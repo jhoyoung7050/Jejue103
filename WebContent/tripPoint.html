@@ -37,13 +37,14 @@
     
     
 
-    <div class = borders  style ="float: left;  z-index: 3;  width:50%; height:520px; overflow-x:hidden; ">
+    <div class = borders  style ="float: left;  z-index: 3;  width:50%; height:520px; overflow-x:hidden;position:absolute;  ">
 <h4>주변 볼거리</h4>
 <div id = "jejuPension" style = "cursor: pointer; border-bottom: 1px solid;">제주에펜션103</div>
 <br>
 
 
-<div id = "gumnung"  style = "cursor: pointer; "><img  class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px;  margin-bottom: 20px;"/>금능해수욕장</div>
+<div id = "gumnung"  style = "cursor: pointer; "><img  class = "images" src="./img/geumneung.jpg" style ="width:300px; height: 200px; border-radius: 30px;  margin-bottom: 20px;visibility: none;  
+background-color: #bbb;"/><span class ="dot" style="right: 86%; top: 270px;"></span> <span class ="dot" style="right: 79%;top: 270px;"></span><span class ="dot" style="right: 72%;top: 270px;"></span>금능해수욕장</div>
  <div id = "hyeopjae" style = "cursor: pointer; border-top: 1px solid;"><img class = "images1" src="./img/hyeopjae.jpg" style ="width:300px; height: 200px; border-radius: 30px; margin-top: 20px; margin-bottom: 20px;"/>협재 해수욕장</div>
   <div id ="cactus"  style = "cursor: pointer; border-top: 1px solid;"><img class = "images2" src="./img/cactus.jpg" style ="width:300px; height: 200px; border-radius: 30px; margin-top: 20px; margin-bottom: 20px; "/>선인장 군락</div>
   <div id = "chagwido"  style = "cursor: pointer; border-top: 1px solid;"><img class = "images3" src="./img/chagido.jpg" style ="width:300px; height: 200px; border-radius: 30px; margin-top: 20px; margin-bottom: 20px; "/>차귀도 </div>
@@ -69,7 +70,7 @@
     </div>
     
     <script>
-		// 슬라이드쇼 이베느
+		// 슬라이드쇼 이벤트
 		var slideIndex = 1;
 		showSlides(slideIndex);
 		

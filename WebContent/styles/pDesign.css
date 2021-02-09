@@ -51,7 +51,22 @@ font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,
   
 }
 
+.borders.dot{
+	z-index: 10;
+}
 
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  z-index:10;
+
+}
 
 .background{
   background-image: url("../img/ë°°ê²½.jpg");
@@ -338,17 +353,21 @@ font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,
 
 .innerBox{
 	overflow:hidden;
-	padding-top: 50px;
+	height:900px;
 	
-	height:563px;
 	
 }
 .innerBox img{
 	overflow:hidden;
 	padding-top: 50px;
+	padding-bottom: 10px;;
 	
 	
 }
+
+
+
+
 
 #paymentTag{
   width: 100%;
@@ -556,13 +575,18 @@ ul{
 
 
 
-img {vertical-align: middle;}
+img {
+	vertical-align: middle;
+
+}
 
 
 .slideshow-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
+  
+  
 }
 
 
