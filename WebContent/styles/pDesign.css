@@ -326,7 +326,7 @@ font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,
 }
 .footer{
   position: relative;
-  z-index: 100;
+  z-index: 90;
   background-color:#222;
   display: block;
   width: 100%;
@@ -356,6 +356,8 @@ font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,
 	display:none;
 	justify-content: center;
 	align-items: center;
+	
+	
 	
 }
 		

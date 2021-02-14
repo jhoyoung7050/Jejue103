@@ -35,31 +35,29 @@
         
 
   <div class = "introduction">
-    <div class = "text" style = "text-align:center;">
+    <div class = "text" style = "text-align:center; margin:0px!important;">
       <h3>방 안내</h3>
-      <span>자세한 내용은 이미지를 클릭 하셔서 확인 해주시면 되겠습니다</span>
+      <p>자세한 내용은 이미지를 클릭 하셔서 확인 해주시면 되겠습니다</p>
     </div>
   </div>
       <div class ="imagesGroup" >
-            <img src="./img/ssong.jpg" class = "roomMain" alt="My Image" width="532" height="423" style="object-fit: cover; padding-right: 8px; cursor: pointer; border-radius: 40px 0px 0px 40px;">
+            <img src="./img/livingroom.jpg" class = "roomMain" alt="My Image" width="532" height="423" style="object-fit: cover; padding-right: 8px; cursor: pointer; border-radius: 40px 0px 0px 40px;">
             <div class = "vertical-images">
                 <img src="./img/ssong2.jpg" class = "roomImages"alt="My Image" width="258" height="208.79" style="object-fit: cover; padding-left: 3px; padding-right: 3px; padding-bottom: 3px; cursor: pointer;">
                 <img src="./img/jeju103.jpg" class ="roomImages" alt="My Image" width="258" height="208.79"style="object-fit: cover; padding-left: 3px; padding-right: 3px; padding-top: 3px; cursor: pointer;">
             </div>
             <div class = "avertical-images">
-                <img src="./img/livingroom.jpg" class ="roomImages" alt="My Image" width="258" height="208.79" style="object-fit: cover; padding-left: 3px; padding-right: 3px; padding-bottom: 3px; cursor: pointer; border-radius: 0px 40px 0px 0px;">
+                <img src="./img/sanbangsan.jpg" class ="roomImages" alt="My Image" width="258" height="208.79" style="object-fit: cover; padding-left: 3px; padding-right: 3px; padding-bottom: 3px; cursor: pointer; border-radius: 0px 40px 0px 0px;">
                 <img src="./img/back.jpg" class ="roomImages" alt="My Image" width="258" height="208.79" style="object-fit: cover; padding-left: 3px; padding-right: 3px;padding-top: 3px; cursor: pointer;  border-radius: 0px 0px 40px 0px;">
             </div>
         </div>
         
-        <div class='bigPictureWrapper'>
-          <div class='bigPicture'>
+        <div class='bigPictureWrapper' style="background-color: white!important; height:102%!important; " >
+          <div class='bigPicture' >
           </div>
-          
-         
-      <br>
-      <br>
+       <img src = "./img/out.png" class ="out" style ="top: 8px;right: 16px; position: absolute;cursor: pointer;"/>
         </div>
+      
        
         
         <script type="text/javascript">
@@ -72,7 +70,7 @@
             
             function showImage(fileCallPath){
             	
-            	var image = "./img/ssong.jpg";
+            	var image = "./img/sanbangsan.jpg";
             	var imageOne ="./img/ssong2.jpg";
             	var imageTwo ="./img/jeju103.jpg";
             	var imageThr="./img/livingroom.jpg";
@@ -127,23 +125,18 @@
             //end fileCallPath
             
               
-            $(".bigPictureWrapper").on("click", function(e){
-                $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
-                setTimeout(function(){
-                  $('.bigPictureWrapper').hide();
-                }, 100);
-              });//end bigWrapperClick event
+            $(".out").on("click", function(e){
+                  $(".bigPicture").animate({width:'0%', height: '0%'}, 100);
+                  setTimeout(function(){
+                    $('.bigPictureWrapper').hide();
+                  }, 100);
+                });//end bigWrapperClick event
           });
         </script>
         <br>
         <br>
         
-      
-      
-    
- 
-         
-    <div class = "footer">
+             <div class = "footer">
       <ul class= "list-info">
         <li>제주에 펜션</li>
         <li>계좌 번호</li>
@@ -153,6 +146,11 @@
             <a href = "https://www.instagram.com/jejuepension103/" target="_blank"><i class="fab fa-instagram" ></i></a>
         </div>
     </div>
+      
+    
+ 
+         
+   
 
       
  
