@@ -7,21 +7,29 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
+    <link href="./styles/pDesign.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link href="./bootstrap-4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-       <h3>결제하기를 위해 정보를 입력해주세요.</h3>
+<body class = "containers">
+<div class = "newBorder" style = "text-align:center; width: 440px; height: 482px; border:1px solid; margin-left:35%; margin-top:5%;">
+       <h4>결제하기를 위해 정보를 입력해주세요.</h4>
+       <div style ="width:300px; height:100px;text-align: right;margin:10%;">
             <label>이름: </label>
-            <input name="name" type="text"><br>
+            <input name="name" type="text" style ="border:none; border-bottom: 1px solid;"><br>
             <label>전화번호: </label>
-            <input type="tel" name="telnum" id="tlno" title="전화번호를 알맞은 형식으로 적어주세요 ' - ' 제외시켜주시기 바랍니다" pattern="[0-9]{11}" >
+            <input type="tel" name="telnum" id="tlno" title="전화번호를 알맞은 형식으로 적어주세요 ' - ' 제외시켜주시기 바랍니다" pattern="[0-9]{11}" style ="border:none;  border-bottom: 1px solid;" >
+     </div>
             <br>
-            <p>요금: <%= request.getParameter("tPayment") %></p>
+            <p style = "font-size:24px;">요금: <%= request.getParameter("tPayment") %></p>
             <input type = "hidden" name = "tPaying" value ="<%= request.getParameter("tPayment") %>">
             
             
          
         
-         <button onclick="requestPay()">결제하기</button>
+         <button  style ="margin-top:20%;" id = "payment" onclick="requestPay()">결제하기</button>
+</div>         
+         
     <script>
     
     var pathName = '<%= request.getParameter("name") %>';
