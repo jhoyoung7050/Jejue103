@@ -14,11 +14,12 @@
 <body class = "containers">
 <div class = "newBorder" style = "text-align:center; width: 440px; height: 482px; border:1px solid; margin-left:35%; margin-top:5%;">
        <h4>결제하기를 위해 정보를 입력해주세요.</h4>
+      <form name = "frm" action="http://localhost:8080/Jejue103/rpayit.jsp">
        <div style ="width:300px; height:100px;text-align: right;margin:10%;">
             <label>이름: </label>
-            <input name="name" type="text" style ="border:none; border-bottom: 1px solid;"><br>
+            <input name="name" type="text" id ="nameT" oninput="this.value=this.value.replace(/[^ㄱ-힣]/g,'');" style ="border:none; border-bottom: 1px solid;" ><br>
             <label>전화번호: </label>
-            <input type="tel" name="telnum" id="tlno" title="전화번호를 알맞은 형식으로 적어주세요 ' - ' 제외시켜주시기 바랍니다" pattern="[0-9]{11}" style ="border:none;  border-bottom: 1px solid;" >
+            <input type="tel" name="telnum" id="tlno" title="전화번호를 알맞은 형식으로 적어주세요 ' - ' 제외시켜주시기 바랍니다"  maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'');" style ="border:none;  border-bottom: 1px solid;" >
      </div>
             <br>
             <p style = "font-size:24px;">요금: <%= request.getParameter("tPayment") %></p>
@@ -27,18 +28,37 @@
             
          
         
-         <button  style ="margin-top:20%;" id = "payment" onclick="requestPay()">결제하기</button>
-</div>         
+         
+        </form>
+        <button  style ="margin-top:20%;" id = "payment" onclick="requestPay()">결제하기</button>
+</div>  
+
+   
          
     <script>
     
-    var pathName = '<%= request.getParameter("name") %>';
-    var pathNumber = '<%= request.getParameter("telnum") %>';
-    var pathAmount = '<%= request.getParameter("tPayment") %>';
-   
-     
-    
     function requestPay(){
+    	
+        var pathName =   document.getElementById("nameT").value;
+        
+        var pathNumber = document.getElementById("tlno").value;
+       
+        var pathAmount = '<%= request.getParameter("tPayment") %>';
+        
+        if(pathName === ""&& pathNumber !== String){
+        	alert("이름을 입력해주세요");
+        	return false;
+        	}
+        else if(pathNumber === "" ){
+        	alert("전화번호를 입력해주세요");
+        	return false;
+        }
+       
+       
+        else{
+        	
+       
+        
     IMP.init("imp20876214"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
  // IMP.request_pay(param, callback) 호출
     IMP.request_pay({ // param
@@ -66,9 +86,15 @@
             })
           } else {
             alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+           
           }
     });
+    
+        }
+    	  
     }
+    
+   
 	    
 	    
     </script>
