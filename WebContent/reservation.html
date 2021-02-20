@@ -111,6 +111,8 @@
                     var text = '선택하신날짜:  ';
                     var sDate = date[0];
                     var eDate = date[1];
+                    document.getElementById("pw3").value = sDate;
+                    document.getElementById("pw4").value =eDate;
 
                     if (date[0] !== null) {
                         text += date[0].format('YYYY-MM-DD');
@@ -314,28 +316,22 @@
         
          <!-- 결제하기 버튼을 누르게 되면 성함과 전화번호 적는칸으로 넘어감. --> 
          
-             <!-- 결제하기 버튼을 누르게 되면 성함과 전화번호 적는칸으로 넘어감. -->     <!-- 결제하기 버튼을 누르게 되면 성함과 전화번호 적는칸으로 넘어감. -->     <!-- 결제하기 버튼을 누르게 되면 성함과 전화번호 적는칸으로 넘어감. -->     <!-- 결제하기 버튼을 누르게 되면 성함과 전화번호 적는칸으로 넘어감. --> 
-          
+       
         <form action="rpayit.jsp" method="get" onsubmit = "return onlyYes(precalculation,'text','text1')">
         
         <!-- 결과값 받아와서 유저들은 못보게끔처리 하는 과정 --> 
-            <p><input type = "hidden" name = "tPayment" id = "pw2" value = "" ></p>
-            
+            <p><input type ="hidden" name = "tPayment" id = "pw2" value = "" ></p>
+            <p><input type ="hidden" name = "dStart" id = "pw3" value = "" ></p>
+            <p><input type ="hidden" name = "dEnd" id = "pw4" value = "" ></p>
             <button id = "payment" type='submit' style = "width:80%!important; height:50px!important;">결제하기</button>
             </form>
         
          </div>
          
          <br>
-         
-        
-        
-     
-        
-      
-              
-        
+
          <script>
+        
          
          // 돈계산 된거 넘겨주는 함수이다
          
@@ -347,6 +343,7 @@
              var adult = parseInt((document.getElementById(b)).value);// 어른 인원수
              var kid = parseInt(document.getElementById(c).value); //아이 인원수
             
+             caldatepayment;
              
              if(adult > 4){
                 daypayment += (adult-4)*25000; // 5명 부터는 인당 성인 2만5천

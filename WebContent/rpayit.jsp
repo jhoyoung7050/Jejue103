@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset= utf-8"
     pageEncoding="utf-8"%>
+ 
 <!DOCTYPE html>
+
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -14,7 +17,7 @@
 <body class = "containers">
 <div class = "newBorder" style = "text-align:center; width: 440px; height: 482px; border:1px solid; margin-left:35%; margin-top:5%;">
        <h4>결제하기를 위해 정보를 입력해주세요.</h4>
-      <form name = "frm" action="http://localhost:8080/Jejue103/rpayit.jsp">
+      <form name = "frm" action="http://localhost:8080/Jejue103/testingDatabase.jsp" method="get" onsubmit ="return requestPay()">
        <div style ="width:300px; height:100px;text-align: right;margin:10%;">
             <label>이름: </label>
             <input name="name" type="text" id ="nameT" oninput="this.value=this.value.replace(/[^ㄱ-힣]/g,'');" style ="border:none; border-bottom: 1px solid;" ><br>
@@ -24,13 +27,14 @@
             <br>
             <p style = "font-size:24px;">요금: <%= request.getParameter("tPayment") %></p>
             <input type = "hidden" name = "tPaying" value ="<%= request.getParameter("tPayment") %>">
-            
-            
-         
+         <input type = "hidden" name = "fDate" value = "<%= request.getParameter("dStart") %>">
+         <input type = "hidden" name = "lDate" value = "<%= request.getParameter("dEnd") %>">
         
-         
+         <button  style ="margin-top:20%;" id = "payment"  onclick ="requestPay()"> 결제하기</button>
         </form>
-        <button  style ="margin-top:20%;" id = "payment" onclick="requestPay()">결제하기</button>
+        
+        
+        
 </div>  
 
    
@@ -45,6 +49,8 @@
        
         var pathAmount = '<%= request.getParameter("tPayment") %>';
         
+     
+        
         if(pathName === ""&& pathNumber !== String){
         	alert("이름을 입력해주세요");
         	return false;
@@ -55,49 +61,18 @@
         }
        
        
-        else{
-        	
-       
-        
-    IMP.init("imp20876214"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
- // IMP.request_pay(param, callback) 호출
-    IMP.request_pay({ // param
-      pg: "html5_inicis",
-      pay_method: "card",
-      merchant_uid: "ORD20180131-0000011",
-      name: "제주에 펜션 103 결제",
-      amount: pathAmount , //변수값 이값은 펜션 예약 페이지에서 받아와야함
-      buyer_name: pathName,
-      buyer_tel: pathNumber,
-      m_redirect_url: "pension.html"
-    }, function (rsp) { // callback
-        if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-            // jQuery로 HTTP 요청
-            jQuery.ajax({
-                url: "https://www.myservice.com/payments/complete", // 가맹점 서버
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                data: {
-                    imp_uid: rsp.imp_uid,
-                    merchant_uid: rsp.merchant_uid
-                }
-            }).done(function (data) {
-              // 가맹점 서버 결제 API 성공시 로직
-            })
-          } else {
-            alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
-           
-          }
-    });
-    
-        }
-    	  
+      
     }
     
-   
-	    
-	    
+  
+    	  
+
+    
+  
+
+
     </script>
+
         
         
 </body>
