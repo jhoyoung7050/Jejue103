@@ -17,7 +17,7 @@
 <body class = "containers">
 <div class = "newBorder" style = "text-align:center; width: 440px; height: 482px; border:1px solid; margin-left:35%; margin-top:5%;">
        <h4>결제하기를 위해 정보를 입력해주세요.</h4>
-      <form name = "frm" action="http://localhost:8080/Jejue103/testingDatabase.jsp" method="get" onsubmit ="return requestPay()">
+      <form name = "frm" action="http://localhost:8080/Jejue103/DBpension.jsp" method="get" onsubmit ="return requestPay()">
        <div style ="width:300px; height:100px;text-align: right;margin:10%;">
             <label>이름: </label>
             <input name="name" type="text" id ="nameT" oninput="this.value=this.value.replace(/[^ㄱ-힣]/g,'');" style ="border:none; border-bottom: 1px solid;" ><br>

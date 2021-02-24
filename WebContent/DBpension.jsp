@@ -58,11 +58,11 @@ window.onload =function request(){
 </script>
 
    <%
-	   String strID ="46";
+	   String strID ="2";
 	   String strName =  request.getParameter("name");
 	   String strPhone = request.getParameter("telnum");
-	   String strSdate = "1";
-	   String strDdate = "1";
+	   String strSdate =  request.getParameter("fDate");
+	   String strDdate =  request.getParameter("lDate");
 	   
         Connection conn = null;
         Statement stmt;
@@ -71,9 +71,11 @@ window.onload =function request(){
    
               Class.forName("com.mysql.jdbc.Driver");
               String jdbcurl = "jdbc:mysql://localhost:3306/guest?serverTimezone=UTC";
-              conn = DriverManager.getConnection(jdbcurl, "root", "******");
+              conn = DriverManager.getConnection(jdbcurl, "root", "Jung90500!");
               stmt = conn.createStatement();
               String sql;
+             
+              
               int nrows;
               sql= "insert into guest values(";
               sql +="'" + strID + "',";
@@ -82,6 +84,8 @@ window.onload =function request(){
               sql += "'" + strSdate + "',";
               sql += "'" + strDdate + "')";
               nrows = stmt.executeUpdate(sql);
+              
+              
        
      
        stmt.close();
