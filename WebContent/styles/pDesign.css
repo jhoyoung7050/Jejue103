@@ -324,18 +324,43 @@ font-family: 'Noto Sans','¸¼Àº °íµñ','Malgun Gothic',Arial,Helvetica,sans-serif,
    
     
 }
-.footer{
-  position: relative;
-  z-index: 90;
-  background-color:#222;
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: auto;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-top: auto;
-  bottom: 0;
+
+
+.blog-footer {
+  padding: 2.5rem 0;
+  color: #999;
+  text-align: center;
+  background-color: #F7F7F7;
+  border-top: .05rem solid #e5e5e5;
+  height: 160.8px;
+    padding-bottom: 20px;
+   width: 100%;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-footer .social{
+	    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin: 0 8px;
+    color: #ffc371;
+    opacity: 0.75;
+    
+}
+.blog-footer .list-inline{
+padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:11px;
+  line-height:1.6;
+  margin-bottom:0;
 }
 
 .bigPictureWrapper {

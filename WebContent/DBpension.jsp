@@ -71,7 +71,7 @@ window.onload =function request(){
    
               Class.forName("com.mysql.jdbc.Driver");
               String jdbcurl = "jdbc:mysql://localhost:3306/guest?serverTimezone=UTC";
-              conn = DriverManager.getConnection(jdbcurl, "root", "Jung90500!");
+              conn = DriverManager.getConnection(jdbcurl, "root", "Jung90500! ");
               stmt = conn.createStatement();
               String sql;
              

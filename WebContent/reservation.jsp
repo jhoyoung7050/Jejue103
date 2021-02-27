@@ -1,9 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+      <%@ page import = "java.sql.*" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
-        <title>ì˜ˆì•½í•˜ê¸°</title>
+        <title>¿¹¾àÇÏ±â</title>
         <link href="./styles/pDesign.css" rel="stylesheet" type="text/css" />
         <link href="./styles/Calendar.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
@@ -54,27 +57,64 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"  >
           <div class = "Pension-name">
-            <a class  ="p-2 text-dark"href="pension.html" target="_self" ><h5 class="my-0 mr-md-auto font-weight-normal" style="font-size: 20px!important;">ì œì£¼ì—íŒ¬ì…˜ 103</h5></a>
+            <a class  ="p-2 text-dark"href="pension.html" target="_self" ><h5 class="my-0 mr-md-auto font-weight-normal" style="font-size: 20px!important;">Á¦ÁÖ¿¡ÆÒ¼Ç 103</h5></a>
           </div>
           <nav class="my-2 my-md-0 mr-md-3" >
           <div class = "nav-right-items">
             <div class = "navItem"> 
-                <a class = "p-2 text-dark"  href="reservation.html" target="_self" style ="border-bottom: 1px solid!important;"> ì˜ˆì•½ </a>
+                <a class = "p-2 text-dark"  href="reservation.html" target="_self" style ="border-bottom: 1px solid!important;"> ¿¹¾à </a>
             </div>
             <div class = "navItem">
-                <a id = "p-2 text-dark"  class  ="p-2 text-dark" href = "map.html" target="_self" >ì°¾ì•„ì˜¤ì‹œëŠ”ê¸¸</a>
+                <a id = "p-2 text-dark"  class  ="p-2 text-dark" href = "map.html" target="_self" >Ã£¾Æ¿À½Ã´Â±æ</a>
             </div>
             <div class = "navItem">
-                <a  id = "p-2 text-dark" class  ="p-2 text-dark" href = "tripPoint.html" target="_self" >ì£¼ë³€ë³¼ê±°ë¦¬</a>
+                <a  id = "p-2 text-dark" class  ="p-2 text-dark" href = "tripPoint.html" target="_self" >ÁÖº¯º¼°Å¸®</a>
             </div>
             <div class = "navItem">
-                <a  id = "p-2 text-dark" class  ="p-2 text-dark"  href = "roomInfo.html" target="_self" >ê°ì‹¤ì•ˆë‚´</a>
+                <a  id = "p-2 text-dark" class  ="p-2 text-dark"  href = "roomInfo.html" target="_self" >°´½Ç¾È³»</a>
             </div>
           </div> 
           </nav>
         </div>
-     
-  
+        
+       
+        <%   
+	 
+	   
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+      
+        try{
+              Class.forName("com.mysql.jdbc.Driver");
+              String jdbcurl = "jdbc:mysql://localhost:3306/guest?serverTimezone=UTC";
+              conn = DriverManager.getConnection(jdbcurl, "root", "Jung90500!");
+              stmt = conn.createStatement();
+              String sql = "select * from guest";
+              
+              
+              rs = stmt.executeQuery(sql);
+        }
+             catch(Exception e){
+            	 out.println("DB ¿¬µ¿ ¿À·ùÀÔ´Ï´Ù.:" + e.getMessage());
+             }
+        while(rs.next()){
+        %>
+         <!-- mySql table °ª °¡Á®¿À±â. -->
+          <input type = "hidden" id="start" value = "<%= rs.getString("sDate")%>"  pattern="[0-9]{6}"/>
+          <input type = "hidden" id = "end" value = "<%= rs.getString("eDate")%>"/>
+        
+              
+         <%
+        }
+         %>     
+       
+     <% 
+       stmt.close();
+       conn.close();
+   %>
+ 
+
 
 
        
@@ -90,10 +130,17 @@
         <script type="text/javascript">
             //<![CDATA[
             	var precalculation=0;
+            	 
+         			
+         			
+         			
             	
             	
             $(function () {
-                $('#wrapper .version strong').text('v' + $.fn.pignoseCalendar.version);
+            	
+            	
+            	 $('#wrapper .version strong').text('v' + $.fn.pignoseCalendar.version);
+              
         
                 function onSelectHandler(date, context) {
                     /**
@@ -108,11 +155,14 @@
                     var $element = context.element;
                     var $calendar = context.calendar;
                     var $box = $element.siblings('.box').show();
-                    var text = 'ì„ íƒí•˜ì‹ ë‚ ì§œ:  ';
+                    var text = '¼±ÅÃÇÏ½Å³¯Â¥:  ';
                     var sDate = date[0];
                     var eDate = date[1];
-                    document.getElementById("pw3").value = sDate.format('YYYY-MM-DD');
-                    document.getElementById("pw4").value =eDate;
+                    document.getElementById("pw3").value =  sDate.format('YYYY-MM-DD');
+                    document.getElementById("pw4").value =eDate.format('YYYY-MM-DD');
+                    
+                    
+                    
 
                     if (date[0] !== null) {
                         text += date[0].format('YYYY-MM-DD');
@@ -120,42 +170,84 @@
         
                     if (date[0] !== null && date[1] !== null) {
                         text += ' ~ ';
-                        // ëª‡ì¼ ë¬µëŠ”ì§€ ë‚ ì§œ ê³„ì‚° ë§ˆì§€ë§‰ë‚  - ì²«ë‚  = ëª‡ì¼ ì¸ì§€
+                        // ¸îÀÏ ¹¬´ÂÁö ³¯Â¥ °è»ê ¸¶Áö¸·³¯ - Ã¹³¯ = ¸îÀÏ ÀÎÁö
                         precalculation =Math.ceil((eDate-sDate)/(1000*60*60*24));
 
                     }
                     else if (date[0] === null && date[1] == null) {
-                        text += 'ì„ íƒí•œë‚  ì—†ìŒ';
+                        text += '¼±ÅÃÇÑ³¯ ¾øÀ½';
                     }
         
                     if (date[1] !== null) {
                         text += date[1].format('YYYY-MM-DD');
                     }
+                    
+                    
         
                     $box.text(text);
                     
                 }
-        
+                
+       
+               
             
                 
-                //íŒ¬ì…˜ 103 ì— ë„£ì„ ë‹¬ë ¥
+                //ÆÒ¼Ç 103 ¿¡ ³ÖÀ» ´Þ·Â
                 let tDay = new Date();
                 let calDate = tDay.getDate(28);
+              
                 // Disabled Range Calendar.
+                 var firstDate =  document.getElementById("start").value;
+         
+     			var secondDate = document.getElementById("end").value;
+     		
+     	
+           
                 var minDate = moment().set('dates', calDate ).format('YYYY-MM-DD');
                 var maxDate = moment().set('dates', Math.max(moment().day(), 365)).format('YYYY-MM-DD');
                 $('.disabled-range-calendar').pignoseCalendar({
                     select: onSelectHandler,
                     minDate: minDate,
-                    maxDate: maxDate,
+                    maxDate: maxDate, 
+                    
+                    //DB¿¡¼­ ¿¹¾à È®ÀÎ ÈÄ ºí·°Ã³¸® ÇØ¹ö¸²
+                	disabledRanges: [
+            			[firstDate, secondDate],
+            		
+            		],
+                  
+            		
+                    
+               
                     
                     pickWeeks: false,
                     multiple: true,
+                    
+                
+                    
+
+
+                   
                 });
+                
+               
+                	
+                });
+                
+                
+          	 
+          	  
           
-            });
+           
+         
+			
+           
+           
+           
             //]]>
         </script>
+        
+      
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/prism.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-javascript.min.js"></script>
@@ -165,19 +257,19 @@
     
     <br><br>
 
-    <!-- ì˜ˆì•½ ë“œë¡­ë°•ìŠ¤ ê´€ë ¨ . -->
+    <!-- ¿¹¾à µå·Ó¹Ú½º °ü·Ã . -->
 
    <div class = container>
-     <h2 style="text-align:center;">ìš”ê¸ˆí‘œ</h2>
+     <h2 style="text-align:center;">¿ä±ÝÇ¥</h2>
   <div class="card-deck mb-3 text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
         <h4 class="my-0 font-weight-normal">Type A</h4>
       </div>
       <div class="card-body" style = "padding-top:15%">
-        <h1 class="card-title pricing-card-title">400,000ï¿¦</h1>
+        <h1 class="card-title pricing-card-title">400,000£Ü</h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>ì„±ì¸ 0~4ì¸ ê¸°ì¤€ìž…ë‹ˆë‹¤</li>
+          <li>¼ºÀÎ 0~4ÀÎ ±âÁØÀÔ´Ï´Ù</li>
         </ul>
         
       </div>
@@ -187,9 +279,9 @@
         <h4 class="my-0 font-weight-normal">Type B</h4>
       </div>
       <div class="card-body" style = "padding-top:15%">
-        <h1 class="card-title pricing-card-title">500,000ï¿¦ </h1>
+        <h1 class="card-title pricing-card-title">500,000£Ü </h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>ì„±ì¸ 8ì¸ ê¸°ì¤€ìž…ë‹ˆë‹¤</li>
+          <li>¼ºÀÎ 8ÀÎ ±âÁØÀÔ´Ï´Ù</li>
         </ul>
       </div>
     </div>
@@ -198,16 +290,16 @@
         <h4 class="my-0 font-weight-normal">Type C</h4>
       </div>
       <div class="card-body" style = "padding-top:15%">
-        <h1 class="card-title pricing-card-title">600,000ï¿¦</h1>
+        <h1 class="card-title pricing-card-title">600,000£Ü</h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>ì„±ì¸ 12ì¸ ê¸°ì¤€ìž…ë‹ˆë‹¤</li>
+          <li>¼ºÀÎ 12ÀÎ ±âÁØÀÔ´Ï´Ù</li>
         </ul>
       </div>
     </div>
   </div>
 
 
-        <h3>ìœ ì˜ì‚¬í•­: 4ì¸ ì´ìƒ ì´ˆê³¼ì‹œ ì„±ì¸ ì¸ë‹¹ 25,000ì› ì¶”ê°€ ìž…ë‹ˆë‹¤. ìœ ì•„ 3ì„¸~ì´ˆë“±í•™ìƒ 10,000ì› ì¶”ê°€, ì•„ê¸°ëŠ” ê³µì§œìž…ë‹ˆë‹¤!</h3>
+        <h3>À¯ÀÇ»çÇ×: 4ÀÎ ÀÌ»ó ÃÊ°ú½Ã ¼ºÀÎ ÀÎ´ç 25,000¿ø Ãß°¡ ÀÔ´Ï´Ù. À¯¾Æ 3¼¼~ÃÊµîÇÐ»ý 10,000¿ø Ãß°¡, ¾Æ±â´Â °øÂ¥ÀÔ´Ï´Ù!</h3>
         
    <div class = "calSide" style =" height:575px; ">
    <div class = boxAndCal style = "width:50%;height:auto; float:left!important;">
@@ -220,12 +312,12 @@
             
         </div>
        <div class = nextCal style ="float: right!important; width:50%!important; padding-top:3%;">
-      <h3 style ="text-align:center;"><b>ì¸ì›ìˆ˜ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”</b></h3>
+      <h3 style ="text-align:center;"><b>ÀÎ¿ø¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä</b></h3>
       <br>
      
         <div class = "card-deck mb-3 text-center" style="display: inline-block; text-align: center; padding-left:26%;">
           <div class = "adultGroup"style ="text-align: center; ">
-            <div class = "reservationNav"style="text-align:center; width:30%;"><b>ì„±ì¸</b></div>
+            <div class = "reservationNav"style="text-align:center; width:30%;"><b>¼ºÀÎ</b></div>
             <div class = "People"> 
               <button onclick="form_btn(-1,'text')" class = "plusMinusBtn" >-</button>
               <input type="text"  id="text" value="1" readonly style="border:0px; width: 20%; text-align: center; font-size:23px;"/>
@@ -235,7 +327,7 @@
          <br>
          <br>
          <div class = "kidGroup" style=" text-align: center;">
-         <div class="reservationNav"style="text-align:center; width:30%;"><b>ìœ ì•„</b></div>
+         <div class="reservationNav"style="text-align:center; width:30%;"><b>À¯¾Æ</b></div>
          <div class = "people"> 
           <button onclick="form_btn(-1,'text1')" class = "plusMinusBtn">-</button>
           <input type="text"  id="text1" value="0" readonly style="border:0px; width: 20%; text-align: center;font-size:23px;" />
@@ -246,33 +338,33 @@
      
         </div>
           
-        <!-- ë¯¸ë¦¬ê³„ì‚°ëœ ê²°ê³¼ê°’ ë³´ì—¬ì£¼ê¸° . -->
+        <!-- ¹Ì¸®°è»êµÈ °á°ú°ª º¸¿©ÁÖ±â . -->
         <div class ="forShadow">
-        <div id ="paymentTag" style = "width:328px; margin-left:auto; margin-right:auto; text-color:black; box-shadow: 0 -3px 8px gray;float:right; margin-right:115px;" >ë‚´ì‹¤ê¸ˆì•¡ì€ 0 <small><br>
-        ë‚´ìš©ì„ ìˆ˜ì •í•œ ê²½ìš° ë¯¸ë¦¬ê³„ì‚° ë²„íŠ¼ì„ í•œë²ˆë” ëˆŒëŸ¬ì£¼ì„¸ìš”</small> </div> 
+        <div id ="paymentTag" style = "width:328px; margin-left:auto; margin-right:auto; text-color:black; box-shadow: 0 -3px 8px gray;float:right; margin-right:115px;" >³»½Ç±Ý¾×Àº 0 <small><br>
+        ³»¿ëÀ» ¼öÁ¤ÇÑ °æ¿ì ¹Ì¸®°è»ê ¹öÆ°À» ÇÑ¹ø´õ ´­·¯ÁÖ¼¼¿ä</small> </div> 
         
-         <!-- ë¯¸ë¦¬ ê³„ì‚° í•´ë³´ê¸° ë²„íŠ¼ . -->
-        <input id = "payment" type = "button" onclick = " finalCalculation(precalculation,'text','text1')" value = "ë¯¸ë¦¬ê³„ì‚°í•˜ê¸°" style = "width:328px; float:right; margin-right:115px;" /><br>
+         <!-- ¹Ì¸® °è»ê ÇØº¸±â ¹öÆ° . -->
+        <input id = "payment" type = "button" onclick = " finalCalculation(precalculation,'text','text1')" value = "¹Ì¸®°è»êÇÏ±â" style = "width:328px; float:right; margin-right:115px;" /><br>
         </div>
         
         </div>
         
 
         <script>
-          // í¼ê°’ ì¦ê°€&ê°ì†Œ
+          // Æû°ª Áõ°¡&°¨¼Ò
         
             function form_btn(n,a){
             
-	            var text = document.getElementById(a); // í¼ ì„ íƒ
+	            var text = document.getElementById(a); // Æû ¼±ÅÃ
 	            
-	            text_val = parseInt(text.value); // í¼ ê°’ì„ ìˆ«ìžì—´ë¡œ ë³€í™˜
+	            text_val = parseInt(text.value); // Æû °ªÀ» ¼ýÀÚ¿­·Î º¯È¯
 	            
-	            text_val += n; // ê³„ì‚°
+	            text_val += n; // °è»ê
 	            
-	            text.value = text_val; // ê³„ì‚°ëœ ê°’ì„ ë°”ê¾¼ë‹¤
+	            text.value = text_val; // °è»êµÈ °ªÀ» ¹Ù²Û´Ù
 	            
 	            if(text_val <= 0){
-	              text.value = 0;   // ë§Œì•½ ê°’ì´ 0 ì´í•˜ë©´ 1ë¡œ ë˜ëŒë ¤ì¤€ë‹¤, 1ë³´ë‹¤ ìž‘ì€ ìˆ˜ëŠ” ë‚˜íƒ€ë‚˜ì§€ ì•Šê²Œí•˜ê¸° ìœ„í•´   
+	              text.value = 0;   // ¸¸¾à °ªÀÌ 0 ÀÌÇÏ¸é 1·Î µÇµ¹·ÁÁØ´Ù, 1º¸´Ù ÀÛÀº ¼ö´Â ³ªÅ¸³ªÁö ¾Ê°ÔÇÏ±â À§ÇØ   
 	            }
 
             }
@@ -280,21 +372,21 @@
           
           
            function finalCalculation(a,b,c){
-                // a = ìˆ™ë°•ì¼ìˆ˜ b = ì–´ë¥¸ì¸ì› c = ì•„ì´ ì¸ì›  
-                  var daypayment = 400000;//í•˜ë£¨ ìˆ™ë°•ë¹„
-                  var caldatepayment =  a; // ìˆ™ë°•ì¼ìˆ˜ ê²°ì • í•´ì¤„êº¼ìž„
-                  var adult = parseInt((document.getElementById(b)).value);// ì–´ë¥¸ ì¸ì›ìˆ˜
-                  var kid = parseInt(document.getElementById(c).value); //ì•„ì´ ì¸ì›ìˆ˜
+                // a = ¼÷¹ÚÀÏ¼ö b = ¾î¸¥ÀÎ¿ø c = ¾ÆÀÌ ÀÎ¿ø  
+                  var daypayment = 400000;//ÇÏ·ç ¼÷¹Úºñ
+                  var caldatepayment =  a; // ¼÷¹ÚÀÏ¼ö °áÁ¤ ÇØÁÙ²¨ÀÓ
+                  var adult = parseInt((document.getElementById(b)).value);// ¾î¸¥ ÀÎ¿ø¼ö
+                  var kid = parseInt(document.getElementById(c).value); //¾ÆÀÌ ÀÎ¿ø¼ö
                   var text = document.getElementById("paymentTag");
                  
                   
                   if(adult > 4){
-                     daypayment += (adult-4)*25000; // 5ëª… ë¶€í„°ëŠ” ì¸ë‹¹ ì„±ì¸ 2ë§Œ5ì²œ
+                     daypayment += (adult-4)*25000; // 5¸í ºÎÅÍ´Â ÀÎ´ç ¼ºÀÎ 2¸¸5Ãµ
                   }
                   
                   daypayment += kid * 10000
                   daypayment*= caldatepayment;
-              	  text.innerHTML = "ë‚´ì‹¤ ê¸ˆì•¡ì€ " + daypayment;
+              	  text.innerHTML = "³»½Ç ±Ý¾×Àº " + daypayment;
               	  
                   if (text.style.display === "none") {
                 	 
@@ -314,16 +406,16 @@
         <div class = "allup-line" style ="text-align:center;">
      
         
-         <!-- ê²°ì œí•˜ê¸° ë²„íŠ¼ì„ ëˆ„ë¥´ê²Œ ë˜ë©´ ì„±í•¨ê³¼ ì „í™”ë²ˆí˜¸ ì ëŠ”ì¹¸ìœ¼ë¡œ ë„˜ì–´ê°. --> 
+         <!-- °áÁ¦ÇÏ±â ¹öÆ°À» ´©¸£°Ô µÇ¸é ¼ºÇÔ°ú ÀüÈ­¹øÈ£ Àû´ÂÄ­À¸·Î ³Ñ¾î°¨. --> 
          
        
         <form action="rpayit.jsp" method="get" onsubmit = "return onlyYes(precalculation,'text','text1')">
         
-        <!-- ê²°ê³¼ê°’ ë°›ì•„ì™€ì„œ ìœ ì €ë“¤ì€ ëª»ë³´ê²Œë”ì²˜ë¦¬ í•˜ëŠ” ê³¼ì • --> 
+        <!-- °á°ú°ª ¹Þ¾Æ¿Í¼­ À¯ÀúµéÀº ¸øº¸°Ô²ûÃ³¸® ÇÏ´Â °úÁ¤ --> 
             <p><input type ="hidden" name = "tPayment" id = "pw2" value = "" ></p>
-            <p><input type ="text" name = "dStart" id = "pw3" value = "" ></p>
+            <p><input type ="hidden" name = "dStart" id = "pw3" value = "" ></p>
             <p><input type ="hidden" name = "dEnd" id = "pw4" value = "" ></p>
-            <button id = "payment" type='submit' style = "width:80%!important; height:50px!important;">ê²°ì œí•˜ê¸°</button>
+            <button id = "payment" type='submit' style = "width:80%!important; height:50px!important;">°áÁ¦ÇÏ±â</button>
             </form>
         
          </div>
@@ -333,20 +425,20 @@
          <script>
         
          
-         // ëˆê³„ì‚° ëœê±° ë„˜ê²¨ì£¼ëŠ” í•¨ìˆ˜ì´ë‹¤
+         // µ·°è»ê µÈ°Å ³Ñ°ÜÁÖ´Â ÇÔ¼öÀÌ´Ù
          
          function onlyYes(a,b,c)
          {
-        	// a = ìˆ™ë°•ì¼ìˆ˜ b = ì–´ë¥¸ì¸ì› c = ì•„ì‰ë¦¬ë“¤ ì¸ì›  
-             var daypayment = 400000;//í•˜ë£¨ ìˆ™ë°•ë¹„
-             var caldatepayment =  a; // ìˆ™ë°•ì¼ìˆ˜ ê²°ì • í•´ì¤„êº¼ìž„
-             var adult = parseInt((document.getElementById(b)).value);// ì–´ë¥¸ ì¸ì›ìˆ˜
-             var kid = parseInt(document.getElementById(c).value); //ì•„ì´ ì¸ì›ìˆ˜
+        	// a = ¼÷¹ÚÀÏ¼ö b = ¾î¸¥ÀÎ¿ø c = ¾Æ½¦¸®µé ÀÎ¿ø  
+             var daypayment = 400000;//ÇÏ·ç ¼÷¹Úºñ
+             var caldatepayment =  a; // ¼÷¹ÚÀÏ¼ö °áÁ¤ ÇØÁÙ²¨ÀÓ
+             var adult = parseInt((document.getElementById(b)).value);// ¾î¸¥ ÀÎ¿ø¼ö
+             var kid = parseInt(document.getElementById(c).value); //¾ÆÀÌ ÀÎ¿ø¼ö
             
              caldatepayment;
              
              if(adult > 4){
-                daypayment += (adult-4)*25000; // 5ëª… ë¶€í„°ëŠ” ì¸ë‹¹ ì„±ì¸ 2ë§Œ5ì²œ
+                daypayment += (adult-4)*25000; // 5¸í ºÎÅÍ´Â ÀÎ´ç ¼ºÀÎ 2¸¸5Ãµ
              }
              
              daypayment += kid * 10000
@@ -357,8 +449,8 @@
         		 
              }
              else if(daypayment === 0){
-            		//ê²°ì œ íŽ˜ì´ì§€ì—ì„œ ìž¬ëŒ€ë¡œ ë‚ ì§œë‚˜ ì¸ì›ìˆ˜ ì•Šë„£ì€ ê²½ìš°
-            		alert("ë‚ ì§œì™€ ì¸ì›ìˆ˜ë¥¼ ë‹¤ì‹œí•œë²ˆ ì²´í¬í•´ì£¼ì„¸ìš”.")
+            		//°áÁ¦ ÆäÀÌÁö¿¡¼­ Àç´ë·Î ³¯Â¥³ª ÀÎ¿ø¼ö ¾Ê³ÖÀº °æ¿ì
+            		alert("³¯Â¥¿Í ÀÎ¿ø¼ö¸¦ ´Ù½ÃÇÑ¹ø Ã¼Å©ÇØÁÖ¼¼¿ä.")
              	 return false;
              	  
              	  
@@ -376,16 +468,15 @@
          
          
          
-        <div class = "footer" >
-          <ul class= "list-info">
-            <li>ì œì£¼ì— íŽœì…˜</li>
-            <li>ê³„ì¢Œ ë²ˆí˜¸</li>
-            <li>ì‚¬ì—…ìžë“±ë¡ë²ˆí˜¸ : 670-28-00536</li>
-            <a href = "https://www.instagram.com/jejuepension103/" target="_blank"><i class="fab fa-instagram" ></i></a>
-          </ul>
-    
-            
-        </div>
+        <footer class="blog-footer" >
+         <div class = "social"><a href = "https://www.instagram.com/jejuepension103/" target="_blank"><i class="fab fa-instagram" ></i></a></div>
+                 <ul  class = "list-inline"  style ="display: flex; justify-content: center;    margin-top: 20px; ">
+                   <li style ="padding-right: 10px; font-weight: bold;">Á¦ÁÖ¿¡Ææ¼Ç103</li>
+                    <li style ="padding-right: 10px; font-weight: bold;"> ±è´ö¼÷</li>
+                    <li style ="padding-right: 10px; font-weight: bold;">  Á¦ÁÖ ¼­±ÍÆ÷½Ã ´ëÁ¤À¾ ³ëÀ»ÇØ¾È·Î 342-66 (¿µ¶ô¸® 2112-6)</li>
+                    <li style ="font-weight: bold;">  »ç¾÷ÀÚµî·Ï¹øÈ£ : 670-28-00536 </li>
+            </ul>
+        </footer>
     
       </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zrbqt0f6rv"></script>
      <link href="./styles/pDesign.css" rel="stylesheet" type="text/css" />
-    <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
      <link href="./styles/pricing.css" rel="stylesheet">
     <link href="./bootstrap-4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
           <nav class="my-2 my-md-0 mr-md-3" >
           <div class = "nav-right-items">
             <div class = "navItem"> 
-                <a class = "p-2 text-dark" href="reservation.html" target="_self" > 예약 </a>
+                <a class = "p-2 text-dark" href="reservation.jsp" target="_self" > 예약 </a>
             </div>
             <div class = "navItem">
                 <a class  ="p-2 text-dark" href = "map.html" target="_self" >찾아오시는길</a>
@@ -37,7 +37,7 @@
     
     
 
-    <div class = borders  style ="float: left;  z-index: 3;  width:50%; height:520px; overflow-x:hidden;position:absolute;  ">
+    <div class = borders  style ="float: left;  z-index: 3;  width:50%; height:588px; overflow-x:hidden;position:absolute;  ">
 <h4>주변 볼거리</h4>
 <div id = "jejuPension" style = "cursor: pointer; border-bottom: 1px solid;">제주에펜션103</div>
 <br>
@@ -416,18 +416,17 @@ $(document).ready(function(){
 </script>
 
 
-
-<div class = "footer" style ="position: fixed;">
-      <ul class= "list-info">
-        <li>제주에 펜션</li>
-        <li>계좌 번호</li>
-        <li>사업자등록번호 : 670-28-00536</li>
-      </ul>
-
-        <div class = "sns-info">
-            <a href = "https://www.instagram.com/jejuepension103/" target="_blank"><i class="fab fa-instagram" ></i></a>
-        </div>
-    </div>
+ <footer class="blog-footer" style ="margin-top: 610px;">
+         <div class = "social"><a href = "https://www.instagram.com/jejuepension103/" target="_blank"><i class="fab fa-instagram" ></i></a></div>
+                 <ul  class = "list-inline"  style ="display: flex; justify-content: center;    margin-top: 20px; ">
+                   <li style ="padding-right: 10px; font-weight: bold;">제주에펜션103</li>
+                    <li style ="padding-right: 10px; font-weight: bold;"> 김덕숙</li>
+                    <li style ="padding-right: 10px; font-weight: bold;">  제주 서귀포시 대정읍 노을해안로 342-66 (영락리 2112-6)</li>
+                    <li style ="font-weight: bold;">  사업자등록번호 : 670-28-00536 </li>                
+            </ul>
+        </footer>
+   
 
 </body>
+
 </html>
